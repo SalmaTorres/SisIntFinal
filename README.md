@@ -4,8 +4,8 @@
 
 1.  **Clonar Repositorio:**
     ```bash
-    git clone [https://aws.amazon.com/es/what-is/repo/](https://aws.amazon.com/es/what-is/repo/)
-    cd Sistema_Analisis_Entrevistas
+    git clone https://github.com/SalmaTorres/SisIntFinal
+    cd SisIntFinal
     ```
 2.  **Crear y Activar Entorno Virtual:**
     ```bash
