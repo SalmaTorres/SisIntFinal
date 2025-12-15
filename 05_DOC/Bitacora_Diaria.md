@@ -13,3 +13,10 @@
 - **Decisión:** Se definió la estructura de salida **JSON** como contrato de interfaz para la fusión multimodal.
 - **Detalle:** La estructura se basa en una lista de objetos `events` dentro de un objeto principal, incluyendo métricas globales (`global_metrics`) y datos por segmento (`start_time_sec`, `emotion_facial_mode`, `emotion_text_nlp`).
 - **Archivo de Contrato:** `04_OUTPUTS/output_structure_contract.json`
+
+## 3. Desarrollos del Módulo ASR/Texto (PBI 1.2)
+- **Librerías Instaladas:** Se instalaron las dependencias para la transcripción y el NLP: `torch`, `torchaudio`, `transformers`, `stable-ts`, y `moviepy`.
+- **Verificación:** Se pasó el test `check_asr.py`, confirmando que el modelo ASR (Whisper) se descarga y transcribió el audio de prueba.
+- **Riesgo Mitigado (Dependencia Crítica):** Se identificó y resolvió un error de `moviepy` debido a la falta de la herramienta de sistema **FFmpeg**. Se logró la instalación de FFmpeg y se actualizó la variable **PATH** del sistema operativo, permitiendo la correcta extracción de audio de los archivos `.mp4`.
+- **Impacto en el Contrato:** El script de prueba ya incluye la lógica para extraer audio, garantizando que el campo `transcribed_text` se llenará correctamente según el Contrato JSON (PBI 1.3).
+

@@ -2,11 +2,9 @@
 
 ## 1. Setup del Entorno y Reproducibilidad
 
-1.  **Clonar Repositorio:**
-    ```bash
-    git clone [https://aws.amazon.com/es/what-is/repo/](https://aws.amazon.com/es/what-is/repo/)
-    cd Sistema_Analisis_Entrevistas
-    ```
+1.  **Requisitos de Sistema:**
+    * **FFmpeg:** Esta herramienta es obligatoria para el procesamiento de archivos de video (`.mp4`). Debe estar instalada en el sistema operativo y su ruta (`/bin`) debe estar añadida a la variable de entorno **PATH**.
+
 2.  **Crear y Activar Entorno Virtual:**
     ```bash
     python -m venv venv_sia
@@ -19,3 +17,7 @@
 4.  **Verificación Rápida (Módulo CNN):**
     * Asegure la existencia de `01_DATA/raw/test_face.jpg`.
     * Ejecute: `python 02_CODE/check_deepface.py`
+
+5.  **Verificación Rápida (Módulo ASR):**
+    * Asegure la existencia de `01_DATA/raw/test_audio.mp3` o `test_video.mp4`.
+    * Ejecute: `python 02_CODE/check_asr.py`
