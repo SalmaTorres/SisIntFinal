@@ -1,0 +1,3 @@
+# Lista final de librerías instaladas 
+# (DeepFace, OpenCV, etc.). 
+# [Tu primer entregable PBI 1.1]
