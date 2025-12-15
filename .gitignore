@@ -1,0 +1,63 @@
+# ----------------------------------------------------------------------
+# 1. ENTORNO VIRTUAL
+# Excluye la carpeta venv donde se guardan las librerías instaladas
+# Esto obliga a usar 'pip install -r requirements.txt'
+# ----------------------------------------------------------------------
+.venv/
+venv/
+venv_sia/
+*venv*
+*.pyc
+
+# ----------------------------------------------------------------------
+# 2. ARCHIVOS GENERADOS POR EL SISTEMA / CACHÉ
+# Excluye archivos temporales del SO y logs
+# ----------------------------------------------------------------------
+# Logs y caché de Python
+__pycache__/
+*.log
+.DS_Store
+
+# Cache de Hugging Face (donde se guardan los modelos grandes)
+.cache/
+hf_token
+
+# Archivos de Jupyter/IPython (si usas cuadernos)
+.ipynb_checkpoints
+
+# ----------------------------------------------------------------------
+# 3. ARCHIVOS GRANDES DE DATOS Y MODELOS
+# Estos deben ser gestionados por Git LFS si fueran necesarios, pero
+# la rúbrica indica que se usan modelos PREENTRENADOS, por lo que se excluyen.
+# ----------------------------------------------------------------------
+# Datos y Outputs
+#01_DATA/raw/*.mp4 # Los videos originales de validación son pesados
+#01_DATA/raw/*.avi
+#01_DATA/raw/*.mov
+#01_DATA/raw/*.zip
+#04_OUTPUTS/temp/ # Cualquier carpeta temporal de procesamiento
+#04_OUTPUTS/*.pkl # Objetos serializados (series de tiempo, etc.)
+
+# Modelos Preentrenados y Descargas
+# La carpeta 03_MODEL contendrá modelos grandes como Whisper, BERT o Vosk.
+03_MODEL/
+vosk-model-*/
+*.h5
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+
+# ----------------------------------------------------------------------
+# 4. ARCHIVOS DE USUARIO/IDE
+# Excluye archivos específicos de editores o sistemas de compilación local
+# ----------------------------------------------------------------------
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Windows
+Thumbs.db
