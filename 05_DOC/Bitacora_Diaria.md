@@ -1,0 +1,1 @@
+"Se ha definido la estructura JSON de salida para la interfaz de módulos. El contrato se encuentra en 04_OUTPUTS/output_structure_contract.json. Se acuerda que todos los módulos deben acoplarse a esta estructura."

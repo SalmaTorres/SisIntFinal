@@ -1,0 +1,29 @@
+{
+  "interview_id": "STRING_ID_UNICO",
+  "video_path": "STRING_RUTA_AL_ARCHIVO_MP4",
+  "global_metrics": {
+    "overall_congruence_score": "FLOAT_PROMEDIO_DE_CONGRUENCIA_DE_ENTREVISTA",
+    "total_duration_sec": "FLOAT_DURACION_TOTAL_DE_VIDEO"
+  },
+  "events": [
+    {
+      "start_time_sec": "FLOAT_INICIO_DEL_SEGMENTO",
+      "end_time_sec": "FLOAT_FIN_DEL_SEGMENTO",
+      "transcribed_text": "STRING_TRANSCRIPCION_DEL_SEGMENTO_DE_VOZ",
+      "emotion_facial_mode": "STRING_EMOCION_DOMINANTE_FACIAL_EN_EL_SEGMENTO",
+      "emotion_facial_history": [
+        "STRING_EMOCION_FRAME_1",
+        "STRING_EMOCION_FRAME_2",
+        "..."
+      ],
+      "emotion_text_nlp": "STRING_EMOCION_DOMINANTE_DE_TEXTO",
+      "congruence_score": "FLOAT_SCORE_DE_ACUERDO_ENTRE_EMOCIONES",
+      "temporal_insight": "STRING_ANALISIS_AUTOMATICO_DEL_EVENTO_PBI_4_3"
+    },
+    {
+      "start_time_sec": 14.2,
+      "end_time_sec": 18.0,
+      "...": "..."
+    }
+  ]
+}
