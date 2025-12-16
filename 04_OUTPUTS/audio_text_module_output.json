@@ -3,23 +3,359 @@
         "transcribed_text": [
             {
                 "start_time": 0.0,
-                "end_time": 10.4,
+                "end_time": 0.94,
                 "speaker": "Sujeto",
-                "text": "Hola, quiero verse extraer las emociones, estoy super feliz, estoy super triste. Bueno, veremos, no sé."
+                "text": "Hello,"
+            },
+            {
+                "start_time": 0.94,
+                "end_time": 1.1,
+                "speaker": "Sujeto",
+                "text": "I"
+            },
+            {
+                "start_time": 1.1,
+                "end_time": 1.32,
+                "speaker": "Sujeto",
+                "text": "think"
+            },
+            {
+                "start_time": 1.32,
+                "end_time": 1.5,
+                "speaker": "Sujeto",
+                "text": "that"
+            },
+            {
+                "start_time": 1.5,
+                "end_time": 1.64,
+                "speaker": "Sujeto",
+                "text": "the"
+            },
+            {
+                "start_time": 1.64,
+                "end_time": 2.08,
+                "speaker": "Sujeto",
+                "text": "problem"
+            },
+            {
+                "start_time": 2.08,
+                "end_time": 2.44,
+                "speaker": "Sujeto",
+                "text": "is"
+            },
+            {
+                "start_time": 2.44,
+                "end_time": 2.64,
+                "speaker": "Sujeto",
+                "text": "that"
+            },
+            {
+                "start_time": 2.64,
+                "end_time": 2.86,
+                "speaker": "Sujeto",
+                "text": "the"
+            },
+            {
+                "start_time": 2.86,
+                "end_time": 3.04,
+                "speaker": "Sujeto",
+                "text": "code"
+            },
+            {
+                "start_time": 3.04,
+                "end_time": 3.24,
+                "speaker": "Sujeto",
+                "text": "is"
+            },
+            {
+                "start_time": 3.24,
+                "end_time": 3.46,
+                "speaker": "Sujeto",
+                "text": "in"
+            },
+            {
+                "start_time": 3.46,
+                "end_time": 4.34,
+                "speaker": "Sujeto",
+                "text": "Spanish,"
+            },
+            {
+                "start_time": 4.34,
+                "end_time": 4.74,
+                "speaker": "Sujeto",
+                "text": "so"
+            },
+            {
+                "start_time": 4.74,
+                "end_time": 5.08,
+                "speaker": "Sujeto",
+                "text": "I"
+            },
+            {
+                "start_time": 5.08,
+                "end_time": 5.5,
+                "speaker": "Sujeto",
+                "text": "try"
+            },
+            {
+                "start_time": 5.5,
+                "end_time": 5.8,
+                "speaker": "Sujeto",
+                "text": "to"
+            },
+            {
+                "start_time": 5.8,
+                "end_time": 6.2,
+                "speaker": "Sujeto",
+                "text": "talk"
+            },
+            {
+                "start_time": 6.2,
+                "end_time": 6.46,
+                "speaker": "Sujeto",
+                "text": "in"
+            },
+            {
+                "start_time": 6.46,
+                "end_time": 6.76,
+                "speaker": "Sujeto",
+                "text": "English"
+            },
+            {
+                "start_time": 7.22,
+                "end_time": 7.52,
+                "speaker": "Sujeto",
+                "text": "I'm"
+            },
+            {
+                "start_time": 7.52,
+                "end_time": 7.82,
+                "speaker": "Sujeto",
+                "text": "very"
+            },
+            {
+                "start_time": 7.82,
+                "end_time": 8.9,
+                "speaker": "Sujeto",
+                "text": "happy."
+            },
+            {
+                "start_time": 8.9,
+                "end_time": 9.42,
+                "speaker": "Sujeto",
+                "text": "I'm"
+            },
+            {
+                "start_time": 9.42,
+                "end_time": 9.74,
+                "speaker": "Sujeto",
+                "text": "so"
+            },
+            {
+                "start_time": 9.74,
+                "end_time": 10.72,
+                "speaker": "Sujeto",
+                "text": "sad."
+            },
+            {
+                "start_time": 10.72,
+                "end_time": 11.46,
+                "speaker": "Sujeto",
+                "text": "I"
+            },
+            {
+                "start_time": 11.46,
+                "end_time": 11.64,
+                "speaker": "Sujeto",
+                "text": "don't"
+            },
+            {
+                "start_time": 11.64,
+                "end_time": 11.84,
+                "speaker": "Sujeto",
+                "text": "know"
             }
         ],
         "text_emotions": [
             {
                 "start_time": 0.0,
-                "end_time": 10.4,
-                "emotion": "NEUTRAL",
-                "confidence": 0.01
+                "end_time": 0.94,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 0.94,
+                "end_time": 1.1,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 1.1,
+                "end_time": 1.32,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 1.32,
+                "end_time": 1.5,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 1.5,
+                "end_time": 1.64,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 1.64,
+                "end_time": 2.08,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 2.08,
+                "end_time": 2.44,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 2.44,
+                "end_time": 2.64,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 2.64,
+                "end_time": 2.86,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 2.86,
+                "end_time": 3.04,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 3.04,
+                "end_time": 3.24,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 3.24,
+                "end_time": 3.46,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 3.46,
+                "end_time": 4.34,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 4.34,
+                "end_time": 4.74,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 4.74,
+                "end_time": 5.08,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 5.08,
+                "end_time": 5.5,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 5.5,
+                "end_time": 5.8,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 5.8,
+                "end_time": 6.2,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 6.2,
+                "end_time": 6.46,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 6.46,
+                "end_time": 6.76,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 7.22,
+                "end_time": 7.52,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 7.52,
+                "end_time": 7.82,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 7.82,
+                "end_time": 8.9,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 8.9,
+                "end_time": 9.42,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 9.42,
+                "end_time": 9.74,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 9.74,
+                "end_time": 10.72,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 10.72,
+                "end_time": 11.46,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 11.46,
+                "end_time": 11.64,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
+            },
+            {
+                "start_time": 11.64,
+                "end_time": 11.84,
+                "emotion": "POS",
+                "confidence": 0.5297406315803528
             }
         ]
     },
     "metadata": {
         "processing_module": "Audio/Texto",
         "asr_model": "openai/whisper-small",
-        "nlp_model": "dccuchile/bert-base-spanish-wwm-uncased"
+        "nlp_model": "pysentimiento/robertuito-sentiment-analysis"
     }
 }

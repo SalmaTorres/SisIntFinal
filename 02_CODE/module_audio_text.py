@@ -3,6 +3,13 @@ import torch
 import os
 import json
 from transformers import pipeline
+import nltk 
+
+try:
+    nltk.download('punkt', quiet=True) 
+    nltk.download('punkt_tab', quiet=True) 
+except:
+    pass
 
 # --- CONFIGURACIÓN GENERAL ---
 # Obtener la ruta base del proyecto (SISINTFINAL)
@@ -19,8 +26,8 @@ OUTPUT_JSON_PATH = os.path.join(BASE_DIR, "04_OUTPUTS", "audio_text_module_outpu
 # --- MODELOS PREENTRENADOS ---
 ASR_MODEL_NAME = "openai/whisper-small" 
 
-# MODELO FUNCIONAL BERT ESPAÑOL (Cumple con la familia BERT de la rúbrica)
-NLP_MODEL_NAME = "dccuchile/bert-base-spanish-wwm-uncased"
+# MODELO FUNCIONAL BERT ESPAÑOL/INGLES 
+NLP_MODEL_NAME = "pysentimiento/robertuito-sentiment-analysis"
 
 # Inicializar pipelines globalmente
 ASR_PIPELINE = None
@@ -46,7 +53,7 @@ def setup_pipelines():
     try:
         # Pipeline NLP (Sentiment Analysis para emociones de texto, PBI 2.2)
         NLP_PIPELINE = pipeline(
-            "text-classification",  # <--- CAMBIAR A CLASIFICACIÓN DE TEXTO
+            "sentiment-analysis", 
             model=NLP_MODEL_NAME, 
             tokenizer=NLP_MODEL_NAME,
             device=DEVICE
@@ -102,7 +109,7 @@ def get_transcription_with_timestamps(audio_path: str) -> list:
             audio_path, 
             chunk_length_s=15, 
             stride_length_s=1,
-            return_timestamps=True,
+            return_timestamps='word', 
             batch_size=8,
             ignore_warning=True
         )
@@ -126,7 +133,7 @@ def get_transcription_with_timestamps(audio_path: str) -> list:
         else:
             print("ADVERTENCIA: La transcripción ASR no generó texto. Revisa el audio de entrada.")
         print("-------------------------------------------------")
-        # *** FIN DEPURACIÓN ***
+       
 
         print(f"[ASR] Transcripción completada. {len(transcription_chunks)} segmentos encontrados.")
         return transcription_chunks
@@ -140,7 +147,7 @@ def get_transcription_with_timestamps(audio_path: str) -> list:
 # ==============================================================================
 def get_text_emotions(text_list: list) -> list:
     """
-    Clasifica la emoción/sentimiento con el Transformer (PBI 2.2).
+    Clasifica la emoción/sentimiento con el Transformer, procesando frase por frase.
     """
     if not NLP_PIPELINE:
         print("NLP Pipeline no está inicializado. Saliendo.")
@@ -150,63 +157,76 @@ def get_text_emotions(text_list: list) -> list:
     
     text_emotions = []
     
-    try:
-        # Intenta obtener el resultado del nuevo Transformer
-        results = NLP_PIPELINE(text_list)
-        
-        if not results:
-             raise ValueError("El pipeline de emociones devolvió una lista vacía.")
-             
-        for result in results:
-            text_emotions.append({
-                # El nuevo modelo de PySentimiento devuelve etiquetas como "anger", "joy", "sadness"
-                'emotion_label': result[0]['label'], 
-                'confidence_score': result[0]['score']
-            })
+    # *** NUEVA LÓGICA: PROCESAR CADA FRASE INDIVIDUALMENTE ***
+    for i, text in enumerate(text_list):
+        if not text.strip(): # Ignorar si la frase está vacía
+            continue
             
-        print("[PBI 2.2] Análisis de emociones de texto completado con el nuevo Transformer. Criterios OK.")
-        return text_emotions
-        
-    except Exception as e:
-        # Si este modelo también falla, seguimos con el plan de emergencia
-        print(f"ERROR CRÍTICO en NLP (PBI 2.2): {e}. Asignando 'NEUTRAL' a todos los segmentos para continuar.")
-        
-        for _ in range(len(text_list)):
-             text_emotions.append({
+        try:
+            # Ejecutar el pipeline SOLO con la frase actual
+            results = NLP_PIPELINE(text)
+            
+            if results and isinstance(results, list) and results[0].get('label'):
+                text_emotions.append({
+                    'emotion_label': results[0]['label'], 
+                    'confidence_score': results[0]['score']
+                })
+                # ¡Agregamos una impresión aquí para ver el resultado intermedio!
+                print(f"   [ÉXITO] Frase {i}: '{text.strip()}' -> {results[0]['label']} ({results[0]['score']:.2f})")
+            else:
+                # Si el resultado es vacío o inesperado (el antiguo error 0)
+                raise ValueError("Resultado NLP inesperado.")
+                
+        except Exception as e:
+            # Plan de emergencia solo para esta frase
+            print(f"   [FALLO] Frase {i}: '{text.strip()}' -> ERROR. Usando NEUTRAL.")
+            text_emotions.append({
                 'emotion_label': 'NEUTRAL',
                 'confidence_score': 0.01 
             })
-        
-        return text_emotions
+
+    if not text_emotions:
+        print("ADVERTENCIA: Ninguna frase pudo ser analizada. Devolviendo NEUTRAL.")
+        return [{'emotion_label': 'NEUTRAL', 'confidence_score': 0.01}]
+
+    print(f"[PBI 2.2] Análisis de emociones de texto completado. Criterios OK.")
+    return text_emotions
 
 # ==============================================================================
 # TAREA PBI 2.5: Ensamblaje ASR/NLP a Salida JSON
 # ==============================================================================
 def assemble_asr_nlp_output(transcription_results: list) -> dict:
-    """
-    Combina ASR (timestamps) y NLP (emociones) para generar la salida JSON (PBI 2.5).
-    """
-    if not transcription_results:
-        print("ADVERTENCIA: No hay resultados de transcripción para ensamblar.")
-        return {}
-
     # 1. Extraer solo el texto para el análisis de emoción PBI 2.2
-    text_list = [item['text'] for item in transcription_results]
+    # Combinamos todos los segmentos ASR en un solo texto largo:
+    full_text = " ".join([item['text'] for item in transcription_results])
+    
+    # *** NUEVA LÓGICA CRÍTICA: DIVIDIR EL TEXTO LARGO EN FRASES ***
+    # Usamos NLTK para dividir el texto por oraciones (basado en puntos, etc.)
+    # Esto resuelve el problema de que el ASR devuelve un solo segmento de 12s.
+    text_list = nltk.sent_tokenize(full_text, language='english')
     
     # 2. Obtener las emociones (lectura del PBI 2.2)
+    # Aquí llamaremos al NLP con la lista de frases cortas (text_list)
     text_emotions_data = get_text_emotions(text_list)
     
+    # ... (El resto del código de Ensamblaje sigue igual,
+    # PERO AHORA DEBEMOS ASIGNAR LA MISMA EMOCIÓN AL ÚNICO SEGMENTO ORIGINAL)
+    
+    # Si tenemos más de 0 resultados de emoción, tomamos el más dominante
+    if text_emotions_data:
+        # Simplificamos: Asignamos la primera emoción detectada al segmento completo ASR
+        # (Esto es un compromiso por la complejidad de re-sincronizar tiempos)
+        final_emotion = text_emotions_data[0] 
+    else:
+        # Fallback si NLTK no genera frases o el NLP falla
+        final_emotion = {'emotion_label': 'NEUTRAL', 'confidence_score': 0.01}
+
     # 3. Ensamblar las secciones (Criterios de PBI 2.5)
     transcribed_text_section = []
     text_emotions_section = []
     
-    for i, result in enumerate(transcription_results):
-        if i >= len(text_emotions_data):
-            # Esto no debería pasar con el manejo de errores en get_text_emotions, pero es un seguro
-            print(f"ADVERTENCIA: Falta dato de emoción para el segmento {i}. Continuando.")
-            continue
-            
-        emotion_data = text_emotions_data[i]
+    # Recorremos el resultado ASR original (que solo tiene un segmento)
+    for result in transcription_results: 
         
         # Sección transcribed_text
         transcribed_text_section.append({
@@ -220,8 +240,8 @@ def assemble_asr_nlp_output(transcription_results: list) -> dict:
         text_emotions_section.append({
             'start_time': result['start_time'],
             'end_time': result['end_time'],
-            'emotion': emotion_data['emotion_label'],
-            'confidence': emotion_data['confidence_score']
+            'emotion': final_emotion['emotion_label'], # <-- USAMOS LA EMOCIÓN FINAL
+            'confidence': final_emotion['confidence_score']
         })
 
     # Generar la salida final (Contrato JSON)
