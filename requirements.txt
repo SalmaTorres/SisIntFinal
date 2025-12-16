@@ -90,4 +90,10 @@ urllib3==2.6.2
 Werkzeug==3.1.4
 wheel==0.45.1
 wrapt==2.0.1
-
+transformers
+torch
+ffmpeg-python # Reemplaza a moviepy para extracción de audio estable
+pydub # Necesario para algunas utilidades de audio si se usan, o para compatibilidad.
+tensorflow
+tf-keras
+scip
