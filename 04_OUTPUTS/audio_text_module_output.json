@@ -1,0 +1,25 @@
+{
+    "audio_analysis": {
+        "transcribed_text": [
+            {
+                "start_time": 0.0,
+                "end_time": 10.4,
+                "speaker": "Sujeto",
+                "text": "Hola, quiero verse extraer las emociones, estoy super feliz, estoy super triste. Bueno, veremos, no sé."
+            }
+        ],
+        "text_emotions": [
+            {
+                "start_time": 0.0,
+                "end_time": 10.4,
+                "emotion": "NEUTRAL",
+                "confidence": 0.01
+            }
+        ]
+    },
+    "metadata": {
+        "processing_module": "Audio/Texto",
+        "asr_model": "openai/whisper-small",
+        "nlp_model": "dccuchile/bert-base-spanish-wwm-uncased"
+    }
+}
