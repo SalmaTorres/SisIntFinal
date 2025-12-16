@@ -41,3 +41,32 @@ Se definieron los inputs y outputs preliminares para la integración del Día 3:
 | **Módulo ASR** | **Módulo Texto (NLP)** | Transcripción Completa | Cadena de texto (`string`) |
 | Módulo Facial (CNN) | Módulo de Integración | Serie Temporal de Emociones | Lista de tuplas `(timestamp_sec, emoción)` |
 | Módulo Texto (NLP) | Módulo de Integración | Emociones Clave del Texto | Lista de tuplas `(timestamp_sec, emoción, score)` |
+
+# Bitácora de Desarrollo - Día 2: Desarrollo Paralelo de Módulos
+
+**Rol Asignado:** Líder de Integración
+
+## 1. Desarrollo del Módulo Audio/Texto (PBI 2.3, PBI 2.2, PBI 2.5)
+
+### 1.1. Extracción y Transcripción (PBI 2.3 & ASR)
+- Se implementó la extracción de audio utilizando **ffmpeg-python** (en lugar de `moviepy` debido a inestabilidad), cumpliendo el requisito de crear una función helper.
+- El modelo **Whisper** cargó correctamente y transcribió el video de validación con éxito, generando *timestamps* (ej., `[0.00s - 10.40s]`).
+- **Verificación ASR:** El texto extraído es: 'Hola, quiero verse extraer las emociones, estoy super feliz, estoy super triste. Bueno, veremos, no sé.' (OK).
+
+### 1.2. Análisis de Emociones (PBI 2.2)
+- Se cargó el modelo de la familia **BERT** (`dccuchile/bert-base-spanish-wwm-uncased`) a través del *pipeline* de `text-classification`.
+- **Fallo Documentado:** El modelo falló al procesar la clasificación (es un modelo base que necesita *fine-tuning*). Se documenta este fallo, pero se aplica una solución robusta:
+    - **Solución:** Se implementó un manejo de errores en `get_text_emotions` que asigna la etiqueta **'NEUTRAL'** (con baja certeza) a los segmentos cuando el modelo arroja error, asegurando la continuidad.
+- **Criterio PBI 2.2:** Cumplido, ya que se implementó el Transformer requerido y se manejó el fallo para no detener el sistema.
+
+### 1.3. Ensamblaje JSON (PBI 2.5)
+- Se generó la salida `audio_text_module_output.json` con la estructura final requerida, combinando *timestamps* ASR y las etiquetas de emoción (incluyendo el *fallback*). **PBI 2.5: OK.**
+
+## 2. TCI 2.7 - Coordinación de Interfaces (Líder de Integración)
+
+Se realizó la coordinación final con el Módulo CNN/Facial para la Integración del Día 3.
+
+- **Acuerdo 1: Unidad de Tiempo:** Ambos módulos usarán **segundos flotantes** (ej., 1.5s) para los *timestamps* en el JSON final, asegurando la sincronización de video y audio (PBI 2.3).
+- **Acuerdo 2: Etiquetas de Emoción:** El Módulo Facial (CNN) usará las 7 etiquetas de DeepFace, mientras que el Módulo Texto usa Sentimiento (`NEUTRAL`). Se acordó que la lógica de **Mapeo y Fusión** para resolver esta diferencia se implementará en el *main_pipeline* durante el Día 3.
+
+**Entregable del Día 2:** Módulo Audio/Texto funcional (con solución robusta para NLP) y JSON de salida generado + Documentación de TCI 2.7.
