@@ -20,3 +20,12 @@
 - **Riesgo Mitigado (Dependencia Crítica):** Se identificó y resolvió un error de `moviepy` debido a la falta de la herramienta de sistema **FFmpeg**. Se logró la instalación de FFmpeg y se actualizó la variable **PATH** del sistema operativo, permitiendo la correcta extracción de audio de los archivos `.mp4`.
 - **Impacto en el Contrato:** El script de prueba ya incluye la lógica para extraer audio, garantizando que el campo `transcribed_text` se llenará correctamente según el Contrato JSON (PBI 1.3).
 
+## 4. Desarrollos del Módulo CNN/Facial (PBI 2.1)
+
+- **Responsable:** Salma (Líder)
+- **Tarea Completada:** Se desarrolló el script `02_CODE/pbi2_1_cnn_extractor.py`.
+- **Funcionalidad:** Este script utiliza OpenCV para la lectura de video y DeepFace para procesar cada frame.
+- **Criterios de Confirmación Cumplidos:**
+    * **Procesamiento de Video:** El script abre y procesa el `video_01.mp4` (TCI 1.4).
+    * **Salida Intermedia:** Se genera el archivo `04_OUTPUTS/cnn_time_series.csv` con el timestamp y la emoción dominante por frame.
+    * **Manejo de No-Rostro:** Se implementó la lógica `try-except` para excluir los frames donde DeepFace no detecta un rostro.
