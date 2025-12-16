@@ -83,3 +83,31 @@ Para ejecutar el pipeline completo, use el script principal `main_pipeline.py` u
 
 ```bash
 python 02_CODE/main_pipeline.py
+
+---
+## 4.1. Uso de Módulos Independientes (Outputs del Día 2)
+
+Antes de ejecutar el pipeline principal, se debe generar la salida de cada módulo por separado para asegurar la sincronización. Ambos módulos deben procesar el *mismo video* de validación (e.g., `video_entrevista_3.mp4`).
+
+**A. Módulo CNN/Emociones (PBI 2.1 y PBI 2.4):**
+
+1.  **Extracción de Serie Temporal (PBI 2.1):** Procesa el video *frame* por *frame* con DeepFace. (Asumiendo que tu script de PBI 2.1 se llama `pbi_2_1_extraction.py`).
+    ```bash
+    python 02_CODE/pbi_2_1_extraction.py
+    ```
+    > **Genera:** `04_OUTPUTS/cnn_time_series.csv`
+2.  **Consolidación por Segmento (PBI 2.4):** Resume la serie temporal en segmentos, utilizando los límites definidos por el ASR/NLP.
+    ```bash
+    python 02_CODE/module_cnn_emotions.py
+    ```
+    > **Genera:** `04_OUTPUTS/cnn_module_output.json`
+
+**B. Módulo Audio/Texto (PBI 2.3, 2.2, 2.5):**
+
+* **Procesamiento Completo:** Extrae audio, realiza transcripción ASR con *timestamps* y aplica análisis NLP para emociones.
+    ```bash
+    python 02_CODE/module_audio_text.py
+    ```
+    > **Genera:** `04_OUTPUTS/audio_text_module_output.json`
+
+---
