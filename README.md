@@ -84,7 +84,6 @@ Para ejecutar el pipeline completo, use el script principal `main_pipeline.py` u
 ```bash
 python 02_CODE/main_pipeline.py
 
----
 ## 4.1. Uso de Módulos Independientes (Outputs del Día 2)
 
 Antes de ejecutar el pipeline principal, se debe generar la salida de cada módulo por separado para asegurar la sincronización. Ambos módulos deben procesar el *mismo video* de validación (e.g., `video_entrevista_3.mp4`).
@@ -110,4 +109,5 @@ Antes de ejecutar el pipeline principal, se debe generar la salida de cada módu
     ```
     > **Genera:** `04_OUTPUTS/audio_text_module_output.json`
 
+---
 ---
