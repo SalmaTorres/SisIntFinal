@@ -10,8 +10,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # --- RUTAS DE ARCHIVOS ---
-VIDEO_FILENAME = "video_entrevista_propia.mp4" # Asume un video de validación
-AUDIO_FILENAME = "audio_extraido.wav"
+VIDEO_FILENAME = "video_entrevista_3.mp4" # Asume un video de validación
+AUDIO_FILENAME = "audio_extraido_entrevista3.wav"
 VIDEO_PATH = os.path.join(BASE_DIR, "01_DATA", "raw", VIDEO_FILENAME)
 AUDIO_PATH = os.path.join(BASE_DIR, "01_DATA", "raw", AUDIO_FILENAME)
 OUTPUT_JSON_PATH = os.path.join(BASE_DIR, "04_OUTPUTS", "audio_text_module_output.json")
