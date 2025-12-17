@@ -32,8 +32,8 @@ VIDEO_PATH = os.path.join(BASE_DIR, "01_DATA", "raw", VIDEO_FILENAME)
 AUDIO_PATH = os.path.join(BASE_DIR, "01_DATA", "raw", AUDIO_FILENAME)
 
 # --- ARCHIVOS DE SALIDA DINÁMICOS ---
-JSON_FILENAME = f"{video_name_clean}_audio_text_output.json"
-OUTPUT_JSON_PATH = os.path.join(BASE_DIR, "05_OUTPUTS", "json_reports", JSON_FILENAME)
+JSON_FILENAME = f"{video_name_clean}.json"
+OUTPUT_JSON_PATH = os.path.join(BASE_DIR, "05_OUTPUTS", "json_reports", "audio_text", JSON_FILENAME)
 
 # --- MODELOS PREENTRENADOS ---
 ASR_MODEL_NAME = "openai/whisper-small" 

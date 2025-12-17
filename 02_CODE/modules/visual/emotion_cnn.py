@@ -1,30 +1,30 @@
-from utils.logger import get_logger
-
-# Inicializar logger con el nombre del módulo
-log = get_logger("Modulo_CNN_Emociones")
-
-def analizar_video(path):
-    log.info(f"Iniciando análisis facial del video: {path}")
-    # ... tu código ...
-    log.info("Análisis facial completado con éxito.")
-    
 import json
 from collections import Counter
 import os
 import pandas as pd
+import sys
+
+# --- AJUSTE DE IMPORTACIONES ---
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(current_dir, "..", ".."))
+
+from utils.logger import get_logger
+from utils.helpers import validate_input_file, create_output_directory
+
+# --- CONFIGURACIÓN ---
+log = get_logger("CNN_Consolidacion")
 
 # --- CONFIGURACIÓN DE RUTAS ---
 # Obtenemos la ruta base del script (02_CODE)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
-# INPUT 1 (Criterio 1): Serie temporal facial (Salida de PBI 2.1)
-INPUT_TIMESERIES_PATH_CSV = os.path.join(BASE_DIR, "..", "04_OUTPUTS", "cnn_time_series.csv")
+# Cambia esto manualmente según el video que estés probando hoy
+NOMBRE_VIDEO = "video_03" 
 
-# INPUT 2: Segmentos de audio/texto (Salida de PBI 2.3)
-INPUT_AUDIO_TEXT_PATH = os.path.join(BASE_DIR, "..", "04_OUTPUTS", "audio_text_module_output.json")
-
-# OUTPUT (Criterio 3): Salida consolidada del módulo CNN
-OUTPUT_CNN_PATH = os.path.join(BASE_DIR, "..", "04_OUTPUTS", "cnn_module_output.json")
+INPUT_TIMESERIES_PATH_CSV = os.path.join(ROOT_DIR, "05_OUTPUTS", "series_temporales", f"{NOMBRE_VIDEO}_faces.csv")
+INPUT_AUDIO_TEXT_PATH = os.path.join(ROOT_DIR, "05_OUTPUTS", "json_reports", "audio_text", f"{NOMBRE_VIDEO}.json")
+OUTPUT_CNN_PATH = os.path.join(ROOT_DIR, "05_OUTPUTS", "json_reports", "face_analysis", f"{NOMBRE_VIDEO}.json")
 
 # --- LÓGICA CENTRAL PBI 2.4 ---
 
@@ -57,7 +57,7 @@ def consolidate_emotions_by_segment(timeseries_data_list: list, start_time: floa
     total_frames = len(segment_frames)
     average_confidence_simplified = count / total_frames if total_frames > 0 else 0.0
 
-    print(f"\n[PBI 2.4] Segmento [{start_time:.2f}s - {end_time:.2f}s]: Emoción Dominante: {dominant_emotion.upper()}")
+    log.info(f"Segmento [{start_time:.2f}s - {end_time:.2f}s] -> Dominante: {dominant_emotion.upper()} ({count}/{total_frames} frames)")
     
     return {
         # Campos requeridos para la integración (Día 3)
@@ -73,28 +73,34 @@ def consolidate_emotions_by_segment(timeseries_data_list: list, start_time: floa
 
 def main_cnn_module_run():
     """Ejecuta el PBI 2.4 completo."""
+    log.info("Iniciando Consolidación de Emociones (PBI 2.4)...")
     
     # Criterio 1: Leer la serie temporal (CSV)
+    # 1. Validación de Inputs con Helper
+    if not validate_input_file(INPUT_TIMESERIES_PATH_CSV):
+        log.error("Falta el archivo CSV de series temporales. Ejecuta primero 'face_extractor.py'.")
+        return
+        
+    if not validate_input_file(INPUT_AUDIO_TEXT_PATH):
+        log.error("Falta el archivo JSON del módulo de Audio. Ejecuta primero 'transcriber.py'.")
+        return
+        
+    # 2. Carga de Datos
     try:
         df_timeseries = pd.read_csv(INPUT_TIMESERIES_PATH_CSV)
-        # Convertir a lista de diccionarios para procesamiento eficiente
         timeseries_data_list = df_timeseries.to_dict('records')
-        print(f"[PBI 2.4] Criterio 1 OK. Serie temporal leída ({len(timeseries_data_list)} frames).")
-    except FileNotFoundError:
-        print(f"ERROR CRÍTICO: Archivo de serie temporal no encontrado en {INPUT_TIMESERIES_PATH_CSV}.")
-        print("Asegúrate de ejecutar el código del PBI 2.1 para generar el CSV primero.")
-        return
+        log.info(f"Serie temporal cargada: {len(timeseries_data_list)} registros.")
         
-    # Obtener los límites de tiempo de los segmentos de la transcripción
-    try:
-        with open(INPUT_AUDIO_TEXT_PATH, 'r') as f:
+        with open(INPUT_AUDIO_TEXT_PATH, 'r', encoding='utf-8') as f:
             audio_text_data = json.load(f)
         segments = audio_text_data['audio_analysis']['transcribed_text']
-    except FileNotFoundError:
-        print(f"ERROR CRÍTICO: No se encontró la salida del módulo Audio/Texto.")
+        log.info(f"Segmentos de transcripción cargados: {len(segments)} segmentos.")
+        
+    except Exception as e:
+        log.error(f"Error leyendo archivos de entrada: {e}")
         return
         
-    # Criterio 2: Consolidar cada segmento usando la lógica de votación
+    # 3. Procesamiento (Consolidación)
     consolidated_results = []
     for segment in segments:
         consolidated_data = consolidate_emotions_by_segment(
@@ -104,7 +110,7 @@ def main_cnn_module_run():
         )
         consolidated_results.append(consolidated_data)
     
-    # Criterio 3: Generar el archivo JSON temporal de salida
+    # 4. Generación de Salida
     output_data = {
         'face_analysis': {
             'consolidated_segments': consolidated_results,
@@ -115,11 +121,15 @@ def main_cnn_module_run():
         }
     }
 
-    with open(OUTPUT_CNN_PATH, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=4, ensure_ascii=False)
+    try:
+        create_output_directory(os.path.dirname(OUTPUT_CNN_PATH))
+        with open(OUTPUT_CNN_PATH, 'w', encoding='utf-8') as f:
+            json.dump(output_data, f, indent=4, ensure_ascii=False)
         
-    print(f"\n[PBI 2.4] Criterio 3 OK. Salida del Módulo CNN generada en {OUTPUT_CNN_PATH}.")
-    print("\n¡PBI 2.4 COMPLETADO! Módulo CNN/Emociones listo para la integración.")
+        log.info(f"¡Éxito! Salida consolidada guardada en: {OUTPUT_CNN_PATH}")
+        
+    except Exception as e:
+        log.error(f"Error guardando el JSON de salida: {e}")
 
 if __name__ == "__main__":
     main_cnn_module_run()

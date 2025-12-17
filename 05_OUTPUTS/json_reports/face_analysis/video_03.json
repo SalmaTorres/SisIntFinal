@@ -1,0 +1,147 @@
+{
+    "face_analysis": {
+        "consolidated_segments": [
+            {
+                "start_time_sec": 0.0,
+                "end_time_sec": 5.0,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.6,
+                "emotion_facial_history": [
+                    "happy",
+                    "fear",
+                    "happy",
+                    "fear",
+                    "happy",
+                    "neutral",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "neutral"
+                ]
+            },
+            {
+                "start_time_sec": 5.0,
+                "end_time_sec": 11.31,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.5384615384615384,
+                "emotion_facial_history": [
+                    "happy",
+                    "happy",
+                    "happy",
+                    "neutral",
+                    "fear",
+                    "neutral",
+                    "surprise",
+                    "happy",
+                    "happy",
+                    "angry",
+                    "happy",
+                    "neutral",
+                    "happy"
+                ]
+            },
+            {
+                "start_time_sec": 11.31,
+                "end_time_sec": 18.17,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.5,
+                "emotion_facial_history": [
+                    "neutral",
+                    "neutral",
+                    "fear",
+                    "fear",
+                    "surprise",
+                    "happy",
+                    "happy",
+                    "fear",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "surprise",
+                    "happy",
+                    "happy"
+                ]
+            },
+            {
+                "start_time_sec": 18.17,
+                "end_time_sec": 25.0,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.7692307692307693,
+                "emotion_facial_history": [
+                    "happy",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "fear",
+                    "fear",
+                    "happy",
+                    "surprise",
+                    "happy",
+                    "happy",
+                    "happy"
+                ]
+            },
+            {
+                "start_time_sec": 25.0,
+                "end_time_sec": 32.03,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.6666666666666666,
+                "emotion_facial_history": [
+                    "happy",
+                    "neutral",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "surprise",
+                    "surprise",
+                    "happy",
+                    "happy",
+                    "angry",
+                    "happy",
+                    "sad",
+                    "happy",
+                    "happy",
+                    "happy"
+                ]
+            },
+            {
+                "start_time_sec": 32.03,
+                "end_time_sec": 37.69,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 0.6363636363636364,
+                "emotion_facial_history": [
+                    "neutral",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "fear",
+                    "neutral",
+                    "happy",
+                    "surprise",
+                    "happy",
+                    "happy",
+                    "happy"
+                ]
+            },
+            {
+                "start_time_sec": 37.69,
+                "end_time_sec": 41.85,
+                "emotion_facial_mode": "happy",
+                "confidence_facial_mode": 1.0,
+                "emotion_facial_history": [
+                    "happy",
+                    "happy",
+                    "happy",
+                    "happy",
+                    "happy"
+                ]
+            }
+        ],
+        "metadata": {
+            "processing_module": "CNN/Emociones",
+            "consolidation_method": "Moda (Votación)"
+        }
+    }
+}
