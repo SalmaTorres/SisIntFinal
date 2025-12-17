@@ -3,113 +3,89 @@
         "transcribed_text": [
             {
                 "start_time": 0.0,
-                "end_time": 4.8,
+                "end_time": 4.76,
                 "speaker": "Sujeto",
                 "text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que"
             },
             {
-                "start_time": 4.8,
-                "end_time": 9.48,
+                "start_time": 4.76,
+                "end_time": 12.39,
                 "speaker": "Sujeto",
-                "text": "la etapa de instalación fue súper fluida y el deepface logró reconocer la cara"
+                "text": "la etapa de instalación fue súper fluida y el D-Face logró reconocer la cara de la imagen de prueba sin ningún problema."
             },
             {
-                "start_time": 9.48,
-                "end_time": 14.68,
+                "start_time": 12.39,
+                "end_time": 20.33,
                 "speaker": "Sujeto",
-                "text": "de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver"
+                "text": "Estamos muy emocionadas por ver cómo se está desarrollando este proyecto, pero luego al intentar integrar"
             },
             {
-                "start_time": 14.68,
-                "end_time": 20.32,
+                "start_time": 20.33,
+                "end_time": 33.19,
                 "speaker": "Sujeto",
-                "text": "cómo se está desarrollando este proyecto, pero luego al intentar integrar"
+                "text": "whisper nos dimos cuenta que la sincronización de los frames con el audio nos está dando errores. Esto es frustrante ya que significa que la integración no será tan fácil como pensábamos,"
             },
             {
-                "start_time": 20.32,
-                "end_time": 24.6,
+                "start_time": 33.19,
+                "end_time": 39.57,
                 "speaker": "Sujeto",
-                "text": "whisper nos dimos cuenta que la sincronización de los frames con el"
+                "text": "pero entonces para el día 2 nos propusimos crear un helper para que recalcule los tiempos y"
             },
             {
-                "start_time": 24.6,
-                "end_time": 29.2,
+                "start_time": 39.57,
+                "end_time": 41.61,
                 "speaker": "Sujeto",
-                "text": "audio nos está dando errores. Esto es frustrante ya que significa que la"
+                "text": "estandarice la salida JSON."
             },
             {
-                "start_time": 29.2,
-                "end_time": 36.28,
+                "start_time": 41.61,
+                "end_time": 46.32,
                 "speaker": "Sujeto",
-                "text": "integración no será tan fácil como pensábamos. Pero entonces, para el día 2 nos propusimos"
-            },
-            {
-                "start_time": 36.28,
-                "end_time": 42.16,
-                "speaker": "Sujeto",
-                "text": "crear un helper para que recalcule los tiempos y estandarice la salida JSON. Tenemos que"
-            },
-            {
-                "start_time": 42.16,
-                "end_time": 46.36,
-                "speaker": "Sujeto",
-                "text": "lograr eliminar todos los errores para que el proyecto vaya en marcha."
+                "text": "Tenemos que lograr eliminar todos los errores para que el proyecto vaya en marcha."
             }
         ],
         "text_emotions": [
             {
                 "start_time": 0.0,
-                "end_time": 4.8,
+                "end_time": 4.76,
                 "emotion": "joy",
                 "confidence": 0.9872411489486694
             },
             {
-                "start_time": 4.8,
-                "end_time": 9.48,
+                "start_time": 4.76,
+                "end_time": 12.39,
                 "emotion": "others",
-                "confidence": 0.5678889751434326
+                "confidence": 0.9087854623794556
             },
             {
-                "start_time": 9.48,
-                "end_time": 14.68,
+                "start_time": 12.39,
+                "end_time": 20.33,
                 "emotion": "joy",
-                "confidence": 0.9761978983879089
+                "confidence": 0.6222031116485596
             },
             {
-                "start_time": 14.68,
-                "end_time": 20.32,
+                "start_time": 20.33,
+                "end_time": 33.19,
                 "emotion": "others",
-                "confidence": 0.9960963129997253
+                "confidence": 0.4918699562549591
             },
             {
-                "start_time": 20.32,
-                "end_time": 24.6,
+                "start_time": 33.19,
+                "end_time": 39.57,
                 "emotion": "others",
-                "confidence": 0.9875081181526184
+                "confidence": 0.9950169920921326
             },
             {
-                "start_time": 24.6,
-                "end_time": 29.2,
+                "start_time": 39.57,
+                "end_time": 41.61,
                 "emotion": "others",
-                "confidence": 0.6156837940216064
+                "confidence": 0.9943506121635437
             },
             {
-                "start_time": 29.2,
-                "end_time": 36.28,
+                "start_time": 41.61,
+                "end_time": 46.32,
                 "emotion": "others",
-                "confidence": 0.9907850027084351
-            },
-            {
-                "start_time": 36.28,
-                "end_time": 42.16,
-                "emotion": "others",
-                "confidence": 0.9939239621162415
-            },
-            {
-                "start_time": 42.16,
-                "end_time": 46.36,
-                "emotion": "others",
-                "confidence": 0.9053419828414917
+                "confidence": 0.9763914942741394
             }
         ]
     },

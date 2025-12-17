@@ -1,0 +1,50 @@
+{
+    "audio_analysis": {
+        "transcribed_text": [
+            {
+                "start_time": 0.0,
+                "end_time": 47.68,
+                "speaker": "Sujeto",
+                "text": "Al comienzo del proyecto me sentí muy emocionada y con muchas ganas de trabajar. Con Salmi y con Vivi teníamos ideas super claras y empezamos con mucha energía. Esto fue fundamental para la motivación del equipo. Pero con el pasar de los días el trabajo se volvió mucho más técnico y estricto. Teníamos que reorganizarnos, teníamos que corregir errores y teníamos que ver la forma de ver cómo vamos a integrar todo el sistema. En esta etapa me sentí muy concentrada y enfocada en los objetivos diarios, pero también en esta parte del proyecto nos sentimos muy estresadas ya que a veces no nos salían las cosas como esperábamos y las cosas no iban bien, nos"
+            },
+            {
+                "start_time": 47.68,
+                "end_time": 52.0,
+                "speaker": "Sujeto",
+                "text": "estaba comiendo el tiempo y a veces sentía como que el tiempo no nos iba a alcanzar."
+            },
+            {
+                "start_time": 52.0,
+                "end_time": 53.8,
+                "speaker": "Sujeto",
+                "text": "Entonces, fue muy frustrante."
+            }
+        ],
+        "text_emotions": [
+            {
+                "start_time": 0.0,
+                "end_time": 47.68,
+                "emotion": "neutral",
+                "confidence": 0.0
+            },
+            {
+                "start_time": 47.68,
+                "end_time": 52.0,
+                "emotion": "neutral",
+                "confidence": 0.0
+            },
+            {
+                "start_time": 52.0,
+                "end_time": 53.8,
+                "emotion": "neutral",
+                "confidence": 0.0
+            }
+        ]
+    },
+    "metadata": {
+        "processing_module": "Audio/Texto",
+        "video_source": "video_04.mp4",
+        "asr_model": "openai/whisper-small",
+        "nlp_model": "pysentimiento/robertuito-emotion-analysis"
+    }
+}
