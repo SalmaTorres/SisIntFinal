@@ -1,0 +1,90 @@
+{
+    "meta": {
+        "video": "video_01.mp4",
+        "duration_process_sec": 196.91,
+        "status": "SUCCESS"
+    },
+    "multimodal_events": [
+        {
+            "start_time": 0.0,
+            "end_time": 7.0,
+            "text": "Voy a verificar la tabla de requisitos y luego revisaré la habitácora que actualizó Vivi.",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 7.0,
+            "end_time": 10.67,
+            "text": "Sólo estoy asegurando que todo esté en orden antes de iniciar el CUA.",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 11.67,
+            "end_time": 14.67,
+            "text": "Espera. Acabo de ver el correo.",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 14.67,
+            "end_time": 15.33,
+            "text": "Ganamos el concurso de la serie. Acabo de ver el correo",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 15.33,
+            "end_time": 18.33,
+            "text": "Ganamos el concurso de la mejor propuesta arquitectónica",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 18.33,
+            "end_time": 20.33,
+            "text": "No me lo puedo creer",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 20.33,
+            "end_time": 25.0,
+            "text": "Pensé que no teníamos ninguna oportunidad, que increíble noticia.",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 26.0,
+            "end_time": 30.47,
+            "text": "Bueno, eso es genial, pero volviendo al trabajo,",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        },
+        {
+            "start_time": 30.47,
+            "end_time": 34.47,
+            "text": "tenemos que terminar la estructura de datos para que Carla pueda empezar.",
+            "audio_emotion": "neutral",
+            "face_emotion": "neutral (MOCK)",
+            "face_confidence": 0.99,
+            "congruence": false
+        }
+    ]
+}
