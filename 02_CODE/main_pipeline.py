@@ -19,7 +19,7 @@ log = get_logger("PIPELINE_PRINCIPAL")
 ROOT_DIR = os.path.dirname(BASE_DIR) # SISINTFINAL
 
 # --- PARÁMETROS DE ENTRADA (CAMBIAR AQUÍ EL VIDEO A PROCESAR) ---
-VIDEO_NAME = "video_01.mp4" 
+VIDEO_NAME = "video_04.mp4" 
 VIDEO_PATH = os.path.join(ROOT_DIR, "01_DATA", "raw", VIDEO_NAME)
 
 def run_full_pipeline():
@@ -37,7 +37,7 @@ def run_full_pipeline():
     filename_clean = os.path.splitext(VIDEO_NAME)[0]
     audio_path = os.path.join(ROOT_DIR, "01_DATA", "processed", "audio_clean", f"audio_{filename_clean}.wav")
     faces_csv_path = os.path.join(ROOT_DIR, "05_OUTPUTS", "series_temporales", f"{filename_clean}_faces.csv")
-    final_json_path = os.path.join(ROOT_DIR, "05_OUTPUTS", "final_integration", f"{filename_clean}_FINAL.json")
+    final_json_path = os.path.join(ROOT_DIR, "05_OUTPUTS", "json_reports", "final_integration", f"{filename_clean}_FINAL.json")
 
     # ---------------------------------------------------------
     # FASE 1: PROCESAMIENTO DE AUDIO / TEXTO

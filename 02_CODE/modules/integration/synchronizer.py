@@ -96,7 +96,14 @@ def synchronize_multimodal_data(transcription_data: list, faces_csv_path: str) -
         # 4. Calcular Congruencia
         congruence = calculate_congruence(text_emotion, face_emotion_mode)
 
-        # 5. Construir Evento (Output Contract)
+        # --- AGREGA ESTO PARA VERIFICAR EN VIVO ---
+        if not segment_faces.empty:
+            log.info(f" > Seg [{start_t:.1f}s - {end_t:.1f}s]: Texto='{text_emotion}' vs Cara='{face_emotion_mode}' ({len(segment_faces)} frames). Congruencia: {congruence}")
+        else:
+            log.warning(f" > Seg [{start_t:.1f}s - {end_t:.1f}s]: SIN CARAS DETECTADAS.")
+        # ------------------------------------------
+
+        # 5. Construir Evento
         event = {
             "start_time_sec": start_t,
             "end_time_sec": end_t,

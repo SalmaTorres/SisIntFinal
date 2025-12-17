@@ -1,6 +1,6 @@
 frame,timestamp_sec,emotion,confidence
 0,0.0,happy,98.76
-15,0.5,fear,31.31
+15,0.5,happy,99.38
 30,1.0,happy,93.17
 45,1.5,fear,93.1
 60,2.0,happy,96.04
@@ -24,7 +24,7 @@ frame,timestamp_sec,emotion,confidence
 330,11.0,happy,90.84
 345,11.5,neutral,77.18
 360,12.0,neutral,65.77
-375,12.5,fear,95.49
+375,12.5,neutral,99.24
 390,13.0,fear,36.94
 405,13.5,surprise,56.36
 420,14.0,happy,65.86

@@ -3,113 +3,89 @@
         "transcribed_text": [
             {
                 "start_time": 0.0,
-                "end_time": 7.0,
+                "end_time": 4.0,
                 "speaker": "Sujeto",
-                "text": "Voy a verificar la tabla de requisitos y luego revisaré la habitácora que actualizó Vivi."
+                "text": "Al comienzo del proyecto me sentí muy emocionada y con muchas ganas de trabajar."
             },
             {
-                "start_time": 7.0,
-                "end_time": 10.67,
+                "start_time": 4.0,
+                "end_time": 10.87,
                 "speaker": "Sujeto",
-                "text": "Sólo estoy asegurando que todo esté en orden antes de iniciar el CUA."
+                "text": "Con Salmi y con Vivi teníamos ideas super claras y empezamos con mucha energía. Esto fue fundamental para la"
             },
             {
-                "start_time": 11.67,
-                "end_time": 14.67,
+                "start_time": 10.87,
+                "end_time": 18.43,
                 "speaker": "Sujeto",
-                "text": "Espera. Acabo de ver el correo."
+                "text": "motivación del equipo, pero con el pasado de los días el trabajo se volvió mucho más técnico y estricto."
             },
             {
-                "start_time": 14.67,
-                "end_time": 15.33,
+                "start_time": 18.43,
+                "end_time": 26.42,
                 "speaker": "Sujeto",
-                "text": "Ganamos el concurso de la serie. Acabo de ver el correo"
+                "text": "Teníamos que reorganizarnos, teníamos que corregir errores, y teníamos que corregir errores y teníamos que ver la forma de ver cómo vamos a integrar"
             },
             {
-                "start_time": 15.33,
-                "end_time": 18.33,
+                "start_time": 26.42,
+                "end_time": 47.68,
                 "speaker": "Sujeto",
-                "text": "Ganamos el concurso de la mejor propuesta arquitectónica"
+                "text": "todo el sistema. En esta etapa me sentí muy concentrada y enf que a veces no nos salían las cosas como esperábamos y las cosas no iban bien, nos"
             },
             {
-                "start_time": 18.33,
-                "end_time": 20.33,
+                "start_time": 47.68,
+                "end_time": 51.67,
                 "speaker": "Sujeto",
-                "text": "No me lo puedo creer"
+                "text": "estaba comiendo el tiempo y a veces se sentía como que el tiempo no nos iba a alcanzar,"
             },
             {
-                "start_time": 20.33,
-                "end_time": 25.0,
+                "start_time": 51.67,
+                "end_time": 53.67,
                 "speaker": "Sujeto",
-                "text": "Pensé que no teníamos ninguna oportunidad, que increíble noticia."
-            },
-            {
-                "start_time": 26.0,
-                "end_time": 30.47,
-                "speaker": "Sujeto",
-                "text": "Bueno, eso es genial, pero volviendo al trabajo,"
-            },
-            {
-                "start_time": 30.47,
-                "end_time": 34.47,
-                "speaker": "Sujeto",
-                "text": "tenemos que terminar la estructura de datos para que Carla pueda empezar."
+                "text": "entonces fue muy frustrante."
             }
         ],
         "text_emotions": [
             {
                 "start_time": 0.0,
-                "end_time": 7.0,
+                "end_time": 4.0,
+                "emotion": "joy",
+                "confidence": 0.9887767434120178
+            },
+            {
+                "start_time": 4.0,
+                "end_time": 10.87,
+                "emotion": "joy",
+                "confidence": 0.9066658020019531
+            },
+            {
+                "start_time": 10.87,
+                "end_time": 18.43,
                 "emotion": "others",
-                "confidence": 0.9959957599639893
+                "confidence": 0.9710525274276733
             },
             {
-                "start_time": 7.0,
-                "end_time": 10.67,
+                "start_time": 18.43,
+                "end_time": 26.42,
                 "emotion": "others",
-                "confidence": 0.9936516284942627
+                "confidence": 0.9797698259353638
             },
             {
-                "start_time": 11.67,
-                "end_time": 14.67,
+                "start_time": 26.42,
+                "end_time": 47.68,
                 "emotion": "others",
-                "confidence": 0.5873094797134399
+                "confidence": 0.8520885109901428
             },
             {
-                "start_time": 14.67,
-                "end_time": 15.33,
+                "start_time": 47.68,
+                "end_time": 51.67,
                 "emotion": "others",
-                "confidence": 0.8775007724761963
+                "confidence": 0.8259745240211487
             },
             {
-                "start_time": 15.33,
-                "end_time": 18.33,
-                "emotion": "others",
-                "confidence": 0.8727774620056152
-            },
-            {
-                "start_time": 18.33,
-                "end_time": 20.33,
-                "emotion": "surprise",
-                "confidence": 0.9047860503196716
-            },
-            {
-                "start_time": 20.33,
-                "end_time": 25.0,
+                "start_time": 51.67,
+                "end_time": 53.67,
                 "emotion": "sadness",
-                "confidence": 0.4766845405101776
-            },
-            {
-                "start_time": 26.0,
-                "end_time": 30.47,
-                "emotion": "others",
-                "confidence": 0.9716784358024597
-            },
-            {
-                "start_time": 30.47,
-                "end_time": 34.47,
-                "emotion": "others",
-                "confidence": 0.9957262277603149
+                "confidence": 0.7883196473121643
             }
         ]
     },
