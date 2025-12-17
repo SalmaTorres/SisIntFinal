@@ -1,9 +1,9 @@
 import pandas as pd
 import sys
 import os
+from collections import Counter # <--- CAMBIO: Usamos Counter en lugar de statistics
 
 # --- IMPORTACIONES UTILS ---
-# Truco para importar desde directorios superiores
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(current_dir, "..", "..", ".."))
 
@@ -11,50 +11,110 @@ from utils.logger import get_logger
 
 log = get_logger("Modulo_Sincronizacion")
 
+def calculate_congruence(emotion_text, emotion_face):
+    """
+    Calcula si hay congruencia (1.0) o no (0.0) entre texto y cara.
+    """
+    # Mapeo básico de sinónimos para asegurar compatibilidad
+    map_emotions = {
+        "joy": "happy",
+        "happiness": "happy",
+        "sadness": "sad",
+        "anger": "angry",
+        "fear": "fear",
+        "surprise": "surprise",
+        "neutral": "neutral"
+    }
+    
+    # Normalizar strings
+    et = str(emotion_text).lower()
+    ef = str(emotion_face).lower()
+    
+    # Traducir usando el mapa
+    et_mapped = map_emotions.get(et, et)
+    ef_mapped = map_emotions.get(ef, ef)
+    
+    return 1.0 if et_mapped == ef_mapped else 0.0
+
 def synchronize_multimodal_data(transcription_data: list, faces_csv_path: str) -> list:
     """
-    [PBI 3.1 - A IMPLEMENTAR POR LA PAREJA INTEGRANTES B Y C]
-    
-    Esta función debe:
-    1. Leer el CSV de caras (faces_csv_path).
-    2. Recorrer la lista de transcripciones (transcription_data).
-    3. Para cada frase, filtrar el CSV por start_time y end_time.
-    4. Calcular la MODA (emoción más frecuente) en ese rango.
-    
-    POR AHORA (MODO ARQUITECTO):
-    Devuelve datos simulados (MOCK) para que el pipeline funcione.
+    IMPLEMENTACIÓN REAL PBI 3.1 (Corregida con Counter)
     """
+    log.info(f"--- INICIANDO SINCRONIZACIÓN REAL ---")
     
-    log.info("--- INICIANDO SINCRONIZACIÓN (MODO MOCK/SIMULADO) ---")
-    log.warning("AVISO: Usando lógica simulada. Los Integrantes B y C deben implementar la lógica real aquí.")
-    
-    # Validar que el CSV exista (aunque no lo usemos a fondo en el mock, es buena práctica)
+    # 1. Cargar el CSV de Caras
     if not os.path.exists(faces_csv_path):
-        log.error(f"No se encontró el CSV de caras: {faces_csv_path}")
+        log.error(f"No se encontró el CSV: {faces_csv_path}")
+        return []
+    
+    try:
+        df_faces = pd.read_csv(faces_csv_path)
+        log.info(f"CSV cargado con {len(df_faces)} frames.")
+    except Exception as e:
+        log.error(f"Error leyendo CSV: {e}")
         return []
 
     integrated_events = []
 
-    # Iteramos sobre los datos reales del audio
+    # 2. Recorrer cada segmento de audio
     for segment in transcription_data:
-        # --- ZONA DE TRABAJO PARA PAREJA B Y C ---
-        # Aquí deberán leer el CSV real y calcular la moda.
-        # Por ahora, inventamos que la cara siempre está "neutral".
+        start_t = segment['start_time']
+        end_t = segment['end_time']
         
-        mock_face_emotion = "neutral (MOCK)" 
-        mock_confidence = 0.99
-        # -----------------------------------------
+        # Obtener emoción de texto de manera segura
+        text_emotion = segment.get('emotion', 'neutral') 
+        # Si por alguna razón viene vacío, forzar neutral
+        if not text_emotion: text_emotion = 'neutral'
 
+        # 3. Filtrar el DataFrame por tiempo
+        mask = (df_faces['timestamp_sec'] >= start_t) & (df_faces['timestamp_sec'] <= end_t)
+        segment_faces = df_faces.loc[mask]
+        
+        # Valores por defecto
+        face_emotion_mode = "neutral"
+        face_confidence_avg = 0.0
+        face_history = []
+        
+        if not segment_faces.empty:
+            # Extraer lista de emociones
+            emotions_list = segment_faces['emotion'].tolist()
+            face_history = emotions_list
+            
+            # --- CORRECCIÓN CLAVE: Usar Counter para la Moda ---
+            if emotions_list:
+                # most_common(1) devuelve una lista [(elemento, cuenta)]
+                # Ejemplo: [('happy', 5)]
+                # Tomamos el primer elemento ([0][0])
+                face_emotion_mode = Counter(emotions_list).most_common(1)[0][0]
+            
+            # Calcular confianza promedio
+            face_confidence_avg = segment_faces['confidence'].mean()
+        else:
+            # Si no hay caras detectadas en ese lapso
+            face_emotion_mode = "no_face_detected"
+
+        # 4. Calcular Congruencia
+        congruence = calculate_congruence(text_emotion, face_emotion_mode)
+
+        # 5. Construir Evento (Output Contract)
         event = {
-            "start_time": segment['start_time'],
-            "end_time": segment['end_time'],
-            "text": segment['text'],
-            "audio_emotion": "neutral", # Esto vendría del módulo de audio
-            "face_emotion": mock_face_emotion, # <--- DATO SIMULADO
-            "face_confidence": mock_confidence,
-            "congruence": False # Asumimos falso por defecto
+            "start_time_sec": start_t,
+            "end_time_sec": end_t,
+            "transcribed_text": segment['text'],
+            
+            "emotion_facial_mode": face_emotion_mode,
+            "emotion_facial_history": face_history,
+            "confidence_facial_mode": round(face_confidence_avg, 2),
+            
+            "emotion_text_nlp": text_emotion,
+            # Aseguramos que confidence_nlp exista
+            "confidence_nlp": segment.get('confidence', 0.0),
+            
+            "congruence_score": congruence,
+            "temporal_insight": "" 
         }
+        
         integrated_events.append(event)
 
-    log.info(f"Sincronización simulada terminada. {len(integrated_events)} eventos procesados.")
+    log.info(f"Sincronización finalizada. {len(integrated_events)} eventos unificados.")
     return integrated_events

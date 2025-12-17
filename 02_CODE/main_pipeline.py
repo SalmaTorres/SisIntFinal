@@ -78,15 +78,25 @@ def run_full_pipeline():
     # ---------------------------------------------------------
     # FASE 4: GENERACIÓN DEL ENTREGABLE FINAL
     # ---------------------------------------------------------
-    log.info(">>> FASE 4: Guardado de Resultados")
+    log.info(">>> FASE 4: Guardado de Resultados (Contract Compliance)")
     
+    # 1. Calcular Métricas Globales (Promedio de congruencia)
+    total_congruence = sum([e['congruence_score'] for e in integrated_events])
+    count_events = len(integrated_events)
+    avg_congruence = round(total_congruence / count_events, 2) if count_events > 0 else 0.0
+    
+    # 2. Obtener duración total (del último evento)
+    total_duration = integrated_events[-1]['end_time_sec'] if integrated_events else 0.0
+
+    # 3. Construir el JSON EXACTO según tu output_structure_contract.json
     final_output = {
-        "meta": {
-            "video": VIDEO_NAME,
-            "duration_process_sec": round(time.time() - start_global, 2),
-            "status": "SUCCESS"
+        "interview_id": f"INT-{filename_clean}", # Generamos un ID basado en el nombre
+        "video_path": VIDEO_PATH,
+        "global_metrics": {
+            "overall_congruence_score": avg_congruence,
+            "total_duration_sec": total_duration
         },
-        "multimodal_events": integrated_events
+        "events": integrated_events # Esta lista viene del synchronizer.py
     }
 
     create_output_directory(os.path.dirname(final_json_path))
