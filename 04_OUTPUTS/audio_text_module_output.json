@@ -1,0 +1,61 @@
+{
+    "audio_analysis": {
+        "transcribed_text": [
+            {
+                "start_time": 0.0,
+                "end_time": 31.88,
+                "speaker": "Sujeto",
+                "text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que la etapa de instalación fue súper fluida y el D-Face logró reconocer la cara de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver cómo se está desarrollando este proyecto, pero luego al intentar integrar whisper nos dimos cuenta que la sincronización de los frames con el la audión nos está dando errores, esto es frustrante ya que significa que la integración no será tan fácil como pensábamos."
+            },
+            {
+                "start_time": 31.88,
+                "end_time": 39.68,
+                "speaker": "Sujeto",
+                "text": "Pero entonces, para el día 2 nos propusimos crear un helper para que recalcule los tiempos y"
+            },
+            {
+                "start_time": 39.68,
+                "end_time": 43.38,
+                "speaker": "Sujeto",
+                "text": "estandarice la salida JSON. Tenemos que lograr eliminar todos los"
+            },
+            {
+                "start_time": 43.38,
+                "end_time": 48.24,
+                "speaker": "Sujeto",
+                "text": "errores para que el proyecto vaya en marcha."
+            }
+        ],
+        "text_emotions": [
+            {
+                "start_time": 0.0,
+                "end_time": 31.88,
+                "emotion": "NEUTRAL",
+                "confidence": 0.01
+            },
+            {
+                "start_time": 31.88,
+                "end_time": 39.68,
+                "emotion": "NEUTRAL",
+                "confidence": 0.01
+            },
+            {
+                "start_time": 39.68,
+                "end_time": 43.38,
+                "emotion": "NEUTRAL",
+                "confidence": 0.01
+            },
+            {
+                "start_time": 43.38,
+                "end_time": 48.24,
+                "emotion": "NEUTRAL",
+                "confidence": 0.01
+            }
+        ]
+    },
+    "metadata": {
+        "processing_module": "Audio/Texto",
+        "asr_model": "openai/whisper-small",
+        "nlp_model": "dccuchile/bert-base-spanish-wwm-uncased"
+    }
+}
