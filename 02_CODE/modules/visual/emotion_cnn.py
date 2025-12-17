@@ -1,3 +1,13 @@
+from utils.logger import get_logger
+
+# Inicializar logger con el nombre del módulo
+log = get_logger("Modulo_CNN_Emociones")
+
+def analizar_video(path):
+    log.info(f"Iniciando análisis facial del video: {path}")
+    # ... tu código ...
+    log.info("Análisis facial completado con éxito.")
+    
 import json
 from collections import Counter
 import os

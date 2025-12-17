@@ -1,0 +1,122 @@
+{
+    "audio_analysis": {
+        "transcribed_text": [
+            {
+                "start_time": 0.0,
+                "end_time": 4.8,
+                "speaker": "Sujeto",
+                "text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que"
+            },
+            {
+                "start_time": 4.8,
+                "end_time": 9.48,
+                "speaker": "Sujeto",
+                "text": "la etapa de instalación fue súper fluida y el deepface logró reconocer la cara"
+            },
+            {
+                "start_time": 9.48,
+                "end_time": 14.68,
+                "speaker": "Sujeto",
+                "text": "de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver"
+            },
+            {
+                "start_time": 14.68,
+                "end_time": 20.32,
+                "speaker": "Sujeto",
+                "text": "cómo se está desarrollando este proyecto, pero luego al intentar integrar"
+            },
+            {
+                "start_time": 20.32,
+                "end_time": 24.6,
+                "speaker": "Sujeto",
+                "text": "whisper nos dimos cuenta que la sincronización de los frames con el"
+            },
+            {
+                "start_time": 24.6,
+                "end_time": 29.2,
+                "speaker": "Sujeto",
+                "text": "audio nos está dando errores. Esto es frustrante ya que significa que la"
+            },
+            {
+                "start_time": 29.2,
+                "end_time": 36.28,
+                "speaker": "Sujeto",
+                "text": "integración no será tan fácil como pensábamos. Pero entonces, para el día 2 nos propusimos"
+            },
+            {
+                "start_time": 36.28,
+                "end_time": 42.16,
+                "speaker": "Sujeto",
+                "text": "crear un helper para que recalcule los tiempos y estandarice la salida JSON. Tenemos que"
+            },
+            {
+                "start_time": 42.16,
+                "end_time": 46.36,
+                "speaker": "Sujeto",
+                "text": "lograr eliminar todos los errores para que el proyecto vaya en marcha."
+            }
+        ],
+        "text_emotions": [
+            {
+                "start_time": 0.0,
+                "end_time": 4.8,
+                "emotion": "joy",
+                "confidence": 0.9872411489486694
+            },
+            {
+                "start_time": 4.8,
+                "end_time": 9.48,
+                "emotion": "others",
+                "confidence": 0.5678889751434326
+            },
+            {
+                "start_time": 9.48,
+                "end_time": 14.68,
+                "emotion": "joy",
+                "confidence": 0.9761978983879089
+            },
+            {
+                "start_time": 14.68,
+                "end_time": 20.32,
+                "emotion": "others",
+                "confidence": 0.9960963129997253
+            },
+            {
+                "start_time": 20.32,
+                "end_time": 24.6,
+                "emotion": "others",
+                "confidence": 0.9875081181526184
+            },
+            {
+                "start_time": 24.6,
+                "end_time": 29.2,
+                "emotion": "others",
+                "confidence": 0.6156837940216064
+            },
+            {
+                "start_time": 29.2,
+                "end_time": 36.28,
+                "emotion": "others",
+                "confidence": 0.9907850027084351
+            },
+            {
+                "start_time": 36.28,
+                "end_time": 42.16,
+                "emotion": "others",
+                "confidence": 0.9939239621162415
+            },
+            {
+                "start_time": 42.16,
+                "end_time": 46.36,
+                "emotion": "others",
+                "confidence": 0.9053419828414917
+            }
+        ]
+    },
+    "metadata": {
+        "module": "Audio/Texto",
+        "video_source": "video_05.mp4",
+        "asr_model": "openai/whisper-small",
+        "nlp_model": "pysentimiento/robertuito-emotion-analysis"
+    }
+}
