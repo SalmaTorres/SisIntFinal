@@ -76,3 +76,37 @@ Se realizó la coordinación final con el Módulo CNN/Facial para la Integració
 - **Trazabilidad:** Se confirmó la correcta escritura de logs en el archivo `system_execution.log` para cada ejecución de los módulos.
 
 **Estado del Proyecto:** Todos los módulos del Día 2 están terminados, probados y documentados. Listos para iniciar el Día 3: Integración Multimodal.
+
+---
+### Actualización de la `Bitacora_Diaria.md` (Día 3)
+
+Copia este bloque al final de tu bitácora para registrar el cumplimiento de las tareas 3.1, 3.2 y 3.3.
+
+# Bitácora de Desarrollo - Sprint 3 (Miércoles)
+
+**Líder Técnico:** Salma
+**Documentador:** Vivi
+**QA:** Carla
+
+## 1. Sincronización y Fusión (PBI 3.1)
+- **Logro:** Se implementó la lógica en `synchronizer.py` para cruzar los intervalos de tiempo del ASR (Whisper) con la moda de emociones de la CNN (DeepFace).
+- **Resultado:** Si el audio dice "Me siento feliz" entre el segundo 0 y 5, el sistema busca todos los frames de la CNN en ese rango y asigna la emoción dominante.
+
+## 2. Arquitectura del Pipeline e Integración (PBI 3.2)
+- **Logro:** Se consolidó el `main_pipeline.py`. Ahora el sistema procesa un video desde cero y entrega un JSON único siguiendo el contrato oficial.
+- **Validación:** El archivo `video_03_FINAL.json` contiene exitosamente los campos `emotion_facial_mode`, `emotion_text_nlp` y `transcribed_text`.
+
+## 3. Visualización de Resultados (PBI 3.3)
+- **Logro:** Se desarrolló `visualizer.py` utilizando **Matplotlib**.
+- **Criterios de Confirmación Cumplidos:**
+    - [x] Eje X representa los segundos del video.
+    - [x] Gráfico muestra dos líneas paralelas (Emoción Rostro vs. Emoción Texto).
+    - [x] Genera un archivo `.png` en la carpeta de resultados.
+- **Observación:** El gráfico permite ver visualmente que el rostro suele marcar "happy" mientras el texto se mantiene en "neutral", detectando una posible falta de congruencia que analizaremos en el Día 4.
+
+## 4. Control de Calidad (QA)
+- **Responsable:** Salma
+- Se corrigió un error de rutas (`ModuleNotFoundError`) ajustando el `sys.path` en los módulos de integración para que reconozcan la carpeta `utils`.
+- Se validó que el JSON generado sea parseable y no contenga valores nulos en los campos críticos de tiempo.
+
+**Estado Final Día 3:** Tareas 3.1, 3.2 y 3.3 completadas al 100%. Sistema integrado funcional.
