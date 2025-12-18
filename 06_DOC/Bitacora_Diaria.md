@@ -69,3 +69,10 @@ Se realizó la coordinación final con el Módulo CNN/Facial para la Integració
 - **Acuerdo 2: Etiquetas de Emoción:** El Módulo Facial (CNN) usará las 7 etiquetas de DeepFace, mientras que el Módulo Texto usa Sentimiento (`NEUTRAL`). Se acordó que la lógica de **Mapeo y Fusión** para resolver esta diferencia se implementará en el *main_pipeline* durante el Día 3.
 **Entregable del Día 2:** Módulo Audio/Texto funcional (con solución robusta para NLP) y JSON de salida generado + Documentación de TCI 2.7.
 
+## 7. QA y Aseguramiento de Calidad (PBI 2.6)
+
+- **Validación de Formatos:** Se verificó que el CSV generado por el extractor facial y el JSON de audio cumplan con los campos obligatorios definidos en el Contrato de Interfaz (PBI 1.3).
+- **Pruebas de Helpers:** Se ejecutó el script `test_utils.py`, validando que las funciones de creación de directorios y validación de archivos funcionen correctamente antes de la integración masiva.
+- **Trazabilidad:** Se confirmó la correcta escritura de logs en el archivo `system_execution.log` para cada ejecución de los módulos.
+
+**Estado del Proyecto:** Todos los módulos del Día 2 están terminados, probados y documentados. Listos para iniciar el Día 3: Integración Multimodal.
