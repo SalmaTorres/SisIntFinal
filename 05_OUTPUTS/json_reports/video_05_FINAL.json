@@ -7,7 +7,9 @@
             "text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que",
             "emotion_text_nlp": "happy",
             "emotion_facial_mode": "happy",
-            "congruence": 1.0
+            "congruence": 1.0,
+            "temporal_insight": "Estable",
+            "is_change_point": false
         },
         {
             "start_time_sec": 4.8,
@@ -15,7 +17,9 @@
             "text": "la etapa de instalación fue súper fluida y el deepface logró reconocer la cara",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "happy",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Cambio en: Texto",
+            "is_change_point": true
         },
         {
             "start_time_sec": 9.48,
@@ -23,7 +27,9 @@
             "text": "de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver",
             "emotion_text_nlp": "happy",
             "emotion_facial_mode": "angry",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Cambio en: Texto, Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 14.68,
@@ -31,7 +37,9 @@
             "text": "cómo se está desarrollando este proyecto, pero luego al intentar integrar",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "happy",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Cambio en: Texto, Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 20.32,
@@ -39,7 +47,9 @@
             "text": "whisper nos dimos cuenta que la sincronización de los frames con el",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "sad",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Cambio en: Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 24.6,
@@ -47,7 +57,9 @@
             "text": "audio nos está dando errores. Esto es frustrante ya que significa que la",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "angry",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Cambio en: Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 29.2,
@@ -55,7 +67,9 @@
             "text": "integración no será tan fácil como pensábamos. Pero entonces, para el día 2 nos propusimos",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "angry",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Estable",
+            "is_change_point": false
         },
         {
             "start_time_sec": 36.28,
@@ -63,7 +77,9 @@
             "text": "crear un helper para que recalcule los tiempos y estandarice la salida JSON. Tenemos que",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "angry",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Estable",
+            "is_change_point": false
         },
         {
             "start_time_sec": 42.16,
@@ -71,7 +87,9 @@
             "text": "lograr eliminar todos los errores para que el proyecto vaya en marcha.",
             "emotion_text_nlp": "neutral",
             "emotion_facial_mode": "angry",
-            "congruence": 0.0
+            "congruence": 0.0,
+            "temporal_insight": "Estable",
+            "is_change_point": false
         }
     ]
 }
