@@ -1,15 +1,16 @@
 # Sistema de Análisis de Entrevistas (Práctica Integrada Avanzada)
 
-Este proyecto implementa un sistema inteligente multimodal que analiza entrevistas combinando el reconocimiento facial de emociones (CNN), transcripción y análisis de texto (Transformers), y análisis temporal (Series de Tiempo), utilizando modelos preentrenados para la integración inteligente.
+Este proyecto implementa un sistema inteligente multimodal de nivel avanzado para el análisis de entrevistas. Combina Reconocimiento Facial de Emociones (CNN), Transcripción y NLP (Transformers) y una capa de Inteligencia Temporal (Simulación GRU/LSTM) para detectar incongruencias y transiciones emocionales.
 
 ---
 
 ## 1. Setup del Entorno y Reproducibilidad
-El sistema requiere las siguientes dependencias externas y de Python para su correcto funcionamiento.
+### 1.1. Requisito de Sistema (FFmpeg)
+El sistema utiliza FFmpeg para la extracción y normalización de audio.
 
-### 1.1. Pre-requisito de Sistema (FFmpeg) 
-
-El módulo de Transcripción (ASR/Whisper) depende de la herramienta de sistema **FFmpeg** para la decodificación de archivos de audio. Debe instalar FFmpeg y añadir la carpeta de los ejecutables (`bin`) a la **Variable de Entorno PATH** de su sistema operativo.
+1. Descargue los ejecutables de gyan.dev.
+2. Añada la carpeta (`bin`) a las Variables de Entorno (PATH) de su sistema.
+3. Verifique con: (`ffmpeg -version`).
 
 ### 1.2. Configuración de Python
 
@@ -31,132 +32,93 @@ El módulo de Transcripción (ASR/Whisper) depende de la herramienta de sistema 
     pip install -r requirements.txt
     ```
 
-### 1.3. Verificación de Módulos (Día 1)
+## 2. Arquitectura de Modelos e Inteligencia
 
-**Verificación Rápida (Módulo CNN/DeepFace):** 
-    * Asegure la existencia de `01_DATA/raw/test_face.jpg`.
-    * Ejecute: `python 02_CODE/check_deepface.py` (Debe detectar una cara).
-**Verificación Rápida (Módulo ASR/Whisper):** 
-    * Asegure la existencia de `01_DATA/raw/audio_prueba_10s.wav` (formato WAV PCM 16kHz).
-    * Ejecute: `python 02_CODE/module_audio_text.py` (Debe devolver la transcripción).
-    
-### 1.4. Librerías Adicionales para Integración (Día 3)
-Para generar los reportes visuales de comparación emocional, es necesario instalar:
-```bash
-pip install matplotlib
-```
+El sistema utiliza una estrategia de Fusión Multimodal Tardía con lógica recurrente:
+
+| Componente | Modelo | Funcion |
+| :--- | :--- | :--- |
+| **ASR** | (`openai/whisper-small`) | Transcripción con timestamps y forzado de idioma (ES) |
+| **NLP** | (`robertuito-emotion-analysis`)  | Clasificación de emociones en texto (BERT-based). |
+| **CNN** | (`DeepFace (VGG-Face)`)  | Extracción de serie temporal de rostros por frame. |
+| **Fusion** | Simulación GRU/LSTM | Lógica de Hidden States para estabilidad temporal. |
+
 ---
 
-## 2. Modelos Preentrenados y Estrategia
+### 2.1. Lógica Avanzada
 
-La solución se basa en la integración de modelos preentrenados para optimizar el tiempo de desarrollo (5 días).
-
-| Componente | Modelo Preentrenado Sugerido | Propósito | Requisito Técnico |
-| :--- | :--- | :--- | :--- |
-| **Reconocimiento Facial** | DeepFace / FER-2013 pretrained  | Detección y extracción de emociones por frame. | Modelo CNN Preentrenado  |
-| **Transcripción Audio (ASR)** | Whisper (OpenAI)  | Convertir audio de video a texto. | Modelo ASR Preentrenado |
-| **Análisis de Texto (NLP)** | ROBERTa-emotion / BERT multilingual  | Extracción de emociones del texto transcrito. | Modelo NLP Preentrenado (Transformers)  |
-| **Análisis Temporal** | Pandas/Series de tiempo manual | Detección de cambios emocionales y congruencia multimodal. | Modelo GRU/LSTM (Series temporales)  |
+- **Detección de Cambios**: Utiliza una memoria de estado emocional (hidden_state) para identificar transiciones abruptas en rostro o texto, evitando falsos positivos por ruido.
+- **Métrica de Congruencia**: Calcula un Score de Acuerdo (0.0 a 1.0) basado en grupos de valencia (ej: "Joy" y "Surprise" tienen acuerdo parcial, "Joy" vs "Anger" tienen acuerdo cero).
 
 ---
 
 ## 3. Estructura del Proyecto
 
-La arquitectura del proyecto sigue una estructura modular y organizada:
 ```
 SisIntFinal/
 ├── 01_DATA/ 
-│   └── raw/              # Videos y audios de validación creados por el equipo
+│   └── raw/                 # Videos y audios de validación creados por el equipo
+│   └── audio_clean/         # Audios extraídos (.wav)
+│   └── series_temporales/   # CSVs generados por DeepFace
 ├── 02_CODE/
-│   ├── main_pipeline.py  # Script principal de ejecución y orquestación
-│   └── module_audio_text.py # Implementación de ASR y NLP
-│   └── check_deepface.py # Script de verificación del módulo CNN
-├── 03_MODEL/
-│   └── (Archivos de modelos preentrenados si son necesarios)
-├── 04_OUTPUTS/
-│   └── output_structure_contract.json # Contrato JSON de la interfaz multimodal
+│   ├── main_pipeline.py     # Script principal de ejecución y orquestación
+│   ├── modules/
+│   │   ├── audio_text/      # transcriber.py (Whisper + RoBERTuito)
+│   │   ├── visual/          # face_extractor.py (DeepFace)
+│   │   └── integration/     # synchronizer.py (GRU), visualizer.py, validator.py
+│   └── utils/               # logger.py, helpers.py
+├── 05_OUTPUTS/
+│   ├── json_reports/        # Reportes finales de integración 
+│   ├── visualizations/      # Dashboards de comparación (.png)
+│   └── logs/                # Trazabilidad del sistema
 ├── 05_DOC/
-│   ├── Bitacora_Diaria.md   # Registro de progreso diario (Entregable Día 1)
-│   └── Informe_Tecnico.pdf # Informe final del proyecto
+│   └── Bitacora_Diaria.md   # Registro de progreso diario
 └── requirements.txt      # Listado de dependencias Python
 ```
 
-## 4. Ejecución del Sistema
+---
 
-Para ejecutar el pipeline completo, use el script principal `main_pipeline.py` una vez que todos los módulos estén integrados (Día 3):
+## 4. Ejecución y Optimización
+
+### 4.1. Pipeline End-to-End
+
+Para procesar un video completo, configure el nombre en main_pipeline.py y ejecute:
 
 ```bash
 python 02_CODE/main_pipeline.py
 ```
-## 4.1. Uso de Módulos Independientes (Outputs del Día 2)
+## 4.2. "Skip Logic" (Eficiencia)
 
-Antes de ejecutar el pipeline principal, se debe generar la salida de cada módulo por separado para asegurar la sincronización. Ambos módulos deben procesar el *mismo video* de validación (e.g., `video_entrevista_3.mp4`).
+El sistema detecta automáticamente si un video ya fue procesado:
+- Si existe el (`.wav`), se salta la extracción de audio.
+- Si existe el (`.csv`), se salta el análisis de DeepFace (ahorro masivo de tiempo en pruebas).
 
-**A. Módulo CNN/Emociones (PBI 2.1 y PBI 2.4):**
+---
 
-1.  **Extracción de Serie Temporal (PBI 2.1):** Procesa el video *frame* por *frame* con DeepFace.
-    ```bash
-    python 02_CODE/pbi_2_1_extraction.py
-    ```
-    > **Genera:** `04_OUTPUTS/cnn_time_series.csv`
-2.  **Consolidación por Segmento (PBI 2.4):** Resume la serie temporal en segmentos, utilizando los límites definidos por el ASR/NLP.
-    ```bash
-    python 02_CODE/module_cnn_emotions.py
-    ```
-    > **Genera:** `04_OUTPUTS/cnn_module_output.json`
+## 5. Análisis Multimodal
 
-**B. Módulo Audio/Texto (PBI 2.3, 2.2, 2.5):**
+El reporte final (`_FINAL.json`) sigue una estructura de contrato avanzada:
+- (`global_metrics`): Promedio de congruencia de toda la entrevista.
+- (`emotion_facial_history`): Trazabilidad total de cada frame detectado para auditoría.
+- (`temporal_insight`): Análisis cualitativo automático (ej: "Transición Abrupta en Rostro").
 
-* **Procesamiento Completo:** Extrae audio, realiza transcripción ASR con *timestamps* y aplica análisis NLP para emociones.
-    ```bash
-    python 02_CODE/module_audio_text.py
-    ```
-    > **Genera:** `04_OUTPUTS/audio_text_module_output.json`
+---
 
-## 5. Documentación de APIs (Entradas y Salidas)
+## 6. Validación de Robustez
 
-Para asegurar la interoperabilidad de los módulos durante la integración, se definen los siguientes contratos de datos:
+1. Edite (`01_DATA/validation_labels.csv`) con etiquetas manuales (Ground Truth).
+2. El sistema ejecutará automáticamente (`validator.py`) al final del pipeline.
+3. Se generará un **Accuracy de Robustez** comparando el Score de la IA vs. el Score Manual.
 
-### 5.1. Módulo CNN / Facial (`face_extractor.py` & `emotion_cnn.py`)
-* **Entrada:** Archivo de video `.mp4` ubicado en `01_DATA/raw/`.
-* **Salida Intermedia:** Archivo CSV con serie temporal (`frame`, `timestamp_sec`, `emotion`, `confidence`) en `05_OUTPUTS/series_temporales/`.
-* **Salida Consolidada:** Archivo JSON con emociones dominantes por segmento en `05_OUTPUTS/json_reports/face_analysis/`.
+---
 
-### 5.2. Módulo Audio / Texto (`transcriber.py`)
-* **Entrada:** Archivo de video `.mp4` (conversión interna a `.wav`).
-* **Salida:** Archivo JSON con transcripción literal y análisis de emociones (NLP) por segmento en `05_OUTPUTS/json_reports/audio_text/`.
+## 7. Visualización Avanzada
 
-### 5.3. Sistema de Trazabilidad (`logger.py`)
-* **Propósito:** Registro centralizado de eventos y errores para auditoría de QA.
-* **Ubicación:** `05_OUTPUTS/logs/system_execution.log`.
+El sistema genera un gráfico de dos niveles para facilitar la interpretación médica/psicológica:
+1. **Nivel Superior**: Series temporales de emoción (Texto vs Rostro) con marcas rojas en los puntos de cambio detectados por la lógica recurrente.
+2. **Nivel Inferior**: Gráfico de barras de Congruencia, codificado por colores (Verde: Acuerdo total, Rojo: Contradicción emocional).
 
-### 5.4. Reporte Final Integrado (Contrato PBI 1.3)
-El resultado final es un objeto JSON que consolida la visión multimodal del sistema:
-* **Events:** Lista sincronizada de frases donde cada una incluye:
-    - `transcribed_text`: Texto obtenido por Whisper.
-    - `emotion_facial_mode`: Moda de emociones detectadas por DeepFace en ese intervalo.
-    - `emotion_facial_history`: Lista de todas las emociones detectadas frame a frame para análisis de microexpresiones.
-    - `emotion_text_nlp`: Clasificación emocional del texto mediante BERT/Robertuito.
-    - 
-## 6. Pruebas y Validación (QA)
-
-Para asegurar la integridad del sistema tras cambios en los módulos, se cuenta con un script de validación de integración:
-
-```bash
-python 02_CODE/tests/test_integration_qa.py
-```
-## 7. Documentación de Integración y Flujo de Datos (TCI 3.6)
-
-El sistema utiliza una arquitectura de tubería (pipeline) donde los datos se transforman en tres etapas principales:
-
-### 7.1. Lógica de Sincronización y Fusión (PBI 3.1)
-La sincronización se basa en el archivo `synchronizer.py`, el cual ejecuta el siguiente algoritmo:
-1. **Entrada:** Recibe el JSON de audio (transcripción con tiempos) y el CSV de caras (emociones por frame).
-2. **Filtrado Temporal:** Para cada frase transcrita, el sistema filtra los frames del video que ocurren estrictamente entre el `start_time` y el `end_time` de dicha frase.
-3. **Cálculo de Moda:** Se extrae la emoción facial predominante (la que más se repite) en ese intervalo.
-4. **Manejo de Errores (Robustez):** Si un segmento de audio no contiene frames asociados (ej: cara tapada o fuera de cuadro), el sistema asigna automáticamente la etiqueta `"neutral"` o `"unknown"` en lugar de interrumpir el proceso.
-
-### 7.2. Flujo de Transformación de Datos
+## 8. Flujo de Transformación de Datos
 
 * **Paso 1 (Extracción):** El video se divide en audio (`.wav`) y frames procesados (`.csv`).
 * **Paso 2 (Análisis):** Whisper genera texto con marcas de tiempo; DeepFace genera etiquetas emocionales por segundo.
