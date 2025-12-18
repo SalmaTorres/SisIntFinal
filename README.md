@@ -108,4 +108,20 @@ Antes de ejecutar el pipeline principal, se debe generar la salida de cada módu
     ```
     > **Genera:** `04_OUTPUTS/audio_text_module_output.json`
 
+## 5. Documentación de APIs (Entradas y Salidas)
+
+Para asegurar la interoperabilidad de los módulos durante la integración, se definen los siguientes contratos de datos:
+
+### 5.1. Módulo CNN / Facial (`face_extractor.py` & `emotion_cnn.py`)
+* **Entrada:** Archivo de video `.mp4` ubicado en `01_DATA/raw/`.
+* **Salida Intermedia:** Archivo CSV con serie temporal (`frame`, `timestamp_sec`, `emotion`, `confidence`) en `05_OUTPUTS/series_temporales/`.
+* **Salida Consolidada:** Archivo JSON con emociones dominantes por segmento en `05_OUTPUTS/json_reports/face_analysis/`.
+
+### 5.2. Módulo Audio / Texto (`transcriber.py`)
+* **Entrada:** Archivo de video `.mp4` (conversión interna a `.wav`).
+* **Salida:** Archivo JSON con transcripción literal y análisis de emociones (NLP) por segmento en `05_OUTPUTS/json_reports/audio_text/`.
+
+### 5.3. Sistema de Trazabilidad (`logger.py`)
+* **Propósito:** Registro centralizado de eventos y errores para auditoría de QA.
+* **Ubicación:** `05_OUTPUTS/logs/system_execution.log`.
 ---
