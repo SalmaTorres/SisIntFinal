@@ -55,13 +55,13 @@
                 "start_time": 4.0,
                 "end_time": 10.87,
                 "emotion": "joy",
-                "confidence": 0.9066658020019531
+                "confidence": 0.9066655039787292
             },
             {
                 "start_time": 10.87,
                 "end_time": 18.43,
                 "emotion": "others",
-                "confidence": 0.9710525274276733
+                "confidence": 0.9710526466369629
             },
             {
                 "start_time": 18.43,
@@ -73,19 +73,19 @@
                 "start_time": 26.42,
                 "end_time": 47.68,
                 "emotion": "others",
-                "confidence": 0.8520885109901428
+                "confidence": 0.8520877361297607
             },
             {
                 "start_time": 47.68,
                 "end_time": 51.67,
                 "emotion": "others",
-                "confidence": 0.8259745240211487
+                "confidence": 0.8259744644165039
             },
             {
                 "start_time": 51.67,
                 "end_time": 53.67,
                 "emotion": "sadness",
-                "confidence": 0.7883196473121643
+                "confidence": 0.7883197069168091
             }
         ]
     },
