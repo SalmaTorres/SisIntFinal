@@ -1,10 +1,11 @@
-Video ID	Timepo de Inicio (s)	Tiempo de Fin (s)	Emocion Facial Real (Ground Truth)	Emocion Verbal (Contexto)
-video_01.mp4	0.0	 11.4	Concentraci�n / Neutralidad	Verificaci�n de requisitos
-video_01.mp4	11.5	26.2	Sorpresa / Alegr�a	Noticia de ganar el concurso
-video_01.mp4	26.3	34.0	Neutralidad	Volver a la tarea de la estructura de datos
-video_04.mp4   0.0   0.12    Alegría / Entusiasmo  Entusiasmo sobre el inicio del proyecto y el trabajo en equipo.
-video_04.mp4   0.13  0.33    Neutralidad / Analítica    Describe tareas técnicas y organización sin carga emocional.  
-video_04.mp4   0.34  0.55    Frustración / Tristeza    Expresa cansancio y frustración por las dificultades y el tiempo.
-video_05.mp4   0.00  0.17    Felicidad / Entusiasmo    Describe avances iniciales y correcto funcionamiento del sistema.
-video_05.mp4   0.18  0.32    Frustración / Decepción    Expresa frustración por errores técnicos y problemas de sincronización.
-video_05.mp4   0.33  0.47    Neutralidad / Concentración    Enfoque analítico en la solución y próximos pasos técnicos.
+video_id,start_time_sec,end_time_sec,manual_emotion_face,manual_emotion_text,manual_congruence
+video_01.mp4,0.0,11.4,neutral,neutral,1.0
+video_01.mp4,11.5,26.2,happy,happy,1.0
+video_01.mp4,26.3,34.0,neutral,neutral,1.0
+video_03.mp4,0.0,39.9,happy,happy,1.0
+video_04.mp4,0.0,12.0,happy,happy,1.0
+video_04.mp4,13.0,33.0,neutral,neutral,1.0
+video_04.mp4,34.0,55.0,neutral,sad,0.3
+video_05.mp4,0.0,17.0,happy,happy,1.0
+video_05.mp4,18.0,32.0,sad,sad,1.0
+video_05.mp4,33.0,47.0,neutral,neutral,1.0

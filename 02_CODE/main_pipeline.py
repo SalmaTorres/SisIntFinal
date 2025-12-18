@@ -31,7 +31,7 @@ import synchronizer as sy
 import visualizer as vi
 
 # --- PARÁMETROS GLOBALES ---
-VIDEO_NAME = "video_06.mp4" 
+VIDEO_NAME = "video_04.mp4" 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Definición de Rutas de Archivos (Estructura SISINTFINAL)
@@ -106,6 +106,17 @@ def run():
         create_output_directory(os.path.dirname(IMG_OUT))
         vi.generate_comparison_plot(events, IMG_OUT)
         log.info(f"Visualización guardada en: {IMG_OUT}")
+
+        # 9. TCI4.6 - Validación de Robustez
+        log.info("Ejecutando auditoría de métricas (TCI4.6)...")
+        manual_csv = os.path.join(BASE, "01_DATA", "validation_labels.csv")
+        
+        from validator import run_manual_validation
+        robustness_report = run_manual_validation(JSON_OUT, manual_csv)
+        
+        if robustness_report:
+            # Guardar un pequeño log de robustez o añadirlo al JSON final
+            log.info(f"EL MODELO TIENE UNA PRECISIÓN DEL {robustness_report['robustness_accuracy']}% RESPECTO AL HUMANO.")
 
     else:
         log.error("No se pudo completar la sincronización. Verifica archivos intermedios.")
