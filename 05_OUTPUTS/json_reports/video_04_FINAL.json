@@ -1,5 +1,5 @@
 {
-    "interview_id": "INT-VIDEO_04-1766088442",
+    "interview_id": "INT-VIDEO_04-1766091154",
     "video_path": "C:\\SisIntFinal\\01_DATA\\raw\\video_04.mp4",
     "global_metrics": {
         "overall_congruence_score": 0.58,
@@ -11,6 +11,7 @@
             "end_time_sec": 4.2,
             "transcribed_text": "Al comienzo del proyecto me sentí muy emocionada y con muchas ganas de trabajar.",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -22,16 +23,16 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Estable",
-            "is_change_point": false
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 4.2,
             "end_time_sec": 9.0,
             "transcribed_text": "Con Salmi y con Vivi teníamos ideas super claras y empezamos con mucha energía.",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -44,9 +45,8 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -54,6 +54,7 @@
             "end_time_sec": 12.0,
             "transcribed_text": "Esto fue fundamental para la motivación del equipo.",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -63,9 +64,8 @@
                 "happy",
                 "sad"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         },
         {
@@ -73,6 +73,7 @@
             "end_time_sec": 18.0,
             "transcribed_text": "Pero con el pasar de los días el trabajo se volvió mucho más técnico y estricto.",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "sad",
                 "angry",
@@ -88,9 +89,8 @@
                 "neutral",
                 "neutral"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Rostro",
+            "temporal_insight": "Transición Abrupta en: Rostro",
             "is_change_point": true
         },
         {
@@ -98,6 +98,7 @@
             "end_time_sec": 27.0,
             "transcribed_text": "Teníamos que reorganizarnos, teníamos que corregir errores y teníamos que ver la forma de ver cómo vamos a integrar todo el sistema.",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "neutral",
                 "fear",
@@ -119,9 +120,8 @@
                 "angry",
                 "angry"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -129,6 +129,7 @@
             "end_time_sec": 34.9,
             "transcribed_text": "tema, en esta etapa me sentí muy concentrada y enfocada en los objetivos diarios, pero",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "angry",
                 "angry",
@@ -147,9 +148,8 @@
                 "angry",
                 "sad"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -157,6 +157,7 @@
             "end_time_sec": 42.5,
             "transcribed_text": "también en esta parte del proyecto nos sentimos muy estresadas ya que a veces no nos salían",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "sad",
                 "sad",
@@ -175,9 +176,8 @@
                 "fear",
                 "fear"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -185,6 +185,7 @@
             "end_time_sec": 49.42,
             "transcribed_text": "las cosas como esperábamos y las cosas no iban bien, nos estaba comiendo el tiempo y a veces",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "sad",
             "emotion_facial_history": [
                 "fear",
                 "angry",
@@ -201,9 +202,8 @@
                 "angry",
                 "angry"
             ],
-            "emotion_text_nlp": "sad",
             "congruence_score": 0.7,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         },
         {
@@ -211,6 +211,7 @@
             "end_time_sec": 53.78,
             "transcribed_text": "se sentía como que el tiempo no nos iba a alcanzar, entonces fue muy frustrante.",
             "emotion_facial_mode": "sad",
+            "emotion_text_nlp": "sad",
             "emotion_facial_history": [
                 "fear",
                 "sad",
@@ -222,9 +223,8 @@
                 "sad",
                 "neutral"
             ],
-            "emotion_text_nlp": "sad",
             "congruence_score": 1.0,
-            "temporal_insight": "Cambio detectado en: Rostro",
+            "temporal_insight": "Transición Abrupta en: Rostro",
             "is_change_point": true
         }
     ]

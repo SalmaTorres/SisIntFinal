@@ -1,5 +1,5 @@
 {
-    "interview_id": "INT-VIDEO_05-1766088622",
+    "interview_id": "INT-VIDEO_05-1766091412",
     "video_path": "C:\\SisIntFinal\\01_DATA\\raw\\video_05.mp4",
     "global_metrics": {
         "overall_congruence_score": 0.34,
@@ -11,6 +11,7 @@
             "end_time_sec": 4.8,
             "transcribed_text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "surprise",
                 "happy",
@@ -23,16 +24,16 @@
                 "angry",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Estable",
-            "is_change_point": false
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 4.8,
             "end_time_sec": 9.48,
             "transcribed_text": "la etapa de instalación fue súper fluida y el deepface logró reconocer la cara",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "neutral",
                 "happy",
@@ -44,9 +45,8 @@
                 "angry",
                 "angry"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         },
         {
@@ -54,6 +54,7 @@
             "end_time_sec": 14.68,
             "transcribed_text": "de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -67,9 +68,8 @@
                 "happy",
                 "angry"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 0.0,
-            "temporal_insight": "Cambio detectado en: Texto, Rostro",
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
             "is_change_point": true
         },
         {
@@ -77,6 +77,7 @@
             "end_time_sec": 20.32,
             "transcribed_text": "cómo se está desarrollando este proyecto, pero luego al intentar integrar",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -90,9 +91,8 @@
                 "sad",
                 "happy"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Texto, Rostro",
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
             "is_change_point": true
         },
         {
@@ -100,6 +100,7 @@
             "end_time_sec": 24.6,
             "transcribed_text": "whisper nos dimos cuenta que la sincronización de los frames con el",
             "emotion_facial_mode": "sad",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "angry",
                 "angry",
@@ -111,9 +112,8 @@
                 "sad",
                 "sad"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Rostro",
+            "temporal_insight": "Transición Abrupta en: Rostro",
             "is_change_point": true
         },
         {
@@ -121,6 +121,7 @@
             "end_time_sec": 29.2,
             "transcribed_text": "audio nos está dando errores. Esto es frustrante ya que significa que la",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "sad",
                 "happy",
@@ -132,9 +133,8 @@
                 "angry",
                 "angry"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Rostro",
+            "temporal_insight": "Transición Abrupta en: Rostro",
             "is_change_point": true
         },
         {
@@ -142,6 +142,7 @@
             "end_time_sec": 36.28,
             "transcribed_text": "integración no será tan fácil como pensábamos. Pero entonces, para el día 2 nos propusimos",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "happy",
                 "angry",
@@ -158,9 +159,8 @@
                 "angry",
                 "sad"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -168,6 +168,7 @@
             "end_time_sec": 42.16,
             "transcribed_text": "crear un helper para que recalcule los tiempos y estandarice la salida JSON. Tenemos que",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "sad",
                 "sad",
@@ -182,9 +183,8 @@
                 "angry",
                 "angry"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -192,6 +192,7 @@
             "end_time_sec": 46.36,
             "transcribed_text": "lograr eliminar todos los errores para que el proyecto vaya en marcha.",
             "emotion_facial_mode": "angry",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "angry",
                 "angry",
@@ -202,9 +203,8 @@
                 "angry",
                 "fear"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         }
     ]

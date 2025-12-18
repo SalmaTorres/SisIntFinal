@@ -1,8 +1,8 @@
 {
-    "interview_id": "INT-VIDEO_03-1766088095",
+    "interview_id": "INT-VIDEO_03-1766090948",
     "video_path": "C:\\SisIntFinal\\01_DATA\\raw\\video_03.mp4",
     "global_metrics": {
-        "overall_congruence_score": 0.69,
+        "overall_congruence_score": 0.61,
         "total_duration_sec": 40.0
     },
     "events": [
@@ -11,6 +11,7 @@
             "end_time_sec": 3.6,
             "transcribed_text": "Me sentí muy feliz que desde el inicio empecemos a trabajar con este",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -21,16 +22,16 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Estable",
-            "is_change_point": false
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 3.6,
             "end_time_sec": 7.8,
             "transcribed_text": "proyecto desde cero, me siento muy contenta con mi equipo ya que desde un",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "neutral",
@@ -41,16 +42,16 @@
                 "fear",
                 "neutral"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
             "start_time_sec": 7.8,
             "end_time_sec": 12.72,
             "transcribed_text": "principio fue motivador, ya que logramos con Salmi y con Vivi ponernos de acuerdo",
-            "emotion_facial_mode": "happy",
+            "emotion_facial_mode": "neutral",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "surprise",
                 "happy",
@@ -63,16 +64,16 @@
                 "neutral",
                 "neutral"
             ],
-            "emotion_text_nlp": "happy",
-            "congruence_score": 1.0,
-            "temporal_insight": "Estable",
-            "is_change_point": false
+            "congruence_score": 0.3,
+            "temporal_insight": "Transición Abrupta en: Rostro",
+            "is_change_point": true
         },
         {
             "start_time_sec": 12.72,
             "end_time_sec": 18.18,
             "transcribed_text": "cómo nos íbamos a dividir el trabajo, ya que en este periodo tan corto pero tan",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "fear",
                 "surprise",
@@ -86,9 +87,8 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
             "is_change_point": true
         },
         {
@@ -96,6 +96,7 @@
             "end_time_sec": 22.64,
             "transcribed_text": "emocionante porque estamos al contrario del vlog, pero es muy bonito ver",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "happy",
                 "happy",
@@ -107,9 +108,8 @@
                 "fear",
                 "happy"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -117,6 +117,7 @@
             "end_time_sec": 27.96,
             "transcribed_text": "como cada etapa del proyecto vamos presentando algo y va tomando forma el",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "surprise",
                 "happy",
@@ -129,9 +130,8 @@
                 "happy",
                 "surprise"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Estable",
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
             "is_change_point": false
         },
         {
@@ -139,6 +139,7 @@
             "end_time_sec": 33.52,
             "transcribed_text": "proyecto, ya estamos muy entusiasmadas porque el sistema ya logra reconocer emociones,",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "surprise",
                 "happy",
@@ -153,9 +154,8 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         },
         {
@@ -163,6 +163,7 @@
             "end_time_sec": 38.52,
             "transcribed_text": "audio, entonces ya queremos ver cómo va a ir la presentación final de este viernes,",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "neutral",
             "emotion_facial_history": [
                 "happy",
                 "fear",
@@ -175,9 +176,8 @@
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "neutral",
             "congruence_score": 0.3,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         },
         {
@@ -185,14 +185,14 @@
             "end_time_sec": 40.0,
             "transcribed_text": "que seguro va a estar fantástica.",
             "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "happy",
             "emotion_facial_history": [
                 "happy",
                 "happy",
                 "happy"
             ],
-            "emotion_text_nlp": "happy",
             "congruence_score": 1.0,
-            "temporal_insight": "Cambio detectado en: Texto",
+            "temporal_insight": "Transición Abrupta en: Texto",
             "is_change_point": true
         }
     ]

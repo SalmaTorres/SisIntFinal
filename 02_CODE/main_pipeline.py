@@ -31,7 +31,7 @@ import synchronizer as sy
 import visualizer as vi
 
 # --- PARÁMETROS GLOBALES ---
-VIDEO_NAME = "video_05.mp4" 
+VIDEO_NAME = "video_06.mp4" 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Definición de Rutas de Archivos (Estructura SISINTFINAL)
@@ -42,7 +42,7 @@ CLEAN_NAME = os.path.splitext(VIDEO_NAME)[0]
 AUDIO_OUT = os.path.join(BASE, "01_DATA", "audio_clean", f"audio_{CLEAN_NAME}.wav")
 CSV_OUT = os.path.join(BASE, "01_DATA", "series_temporales", f"{CLEAN_NAME}_faces.csv")
 JSON_OUT = os.path.join(BASE, "05_OUTPUTS", "json_reports", f"{CLEAN_NAME}_FINAL.json")
-IMG_OUT = os.path.join(BASE, "05_OUTPUTS", "visualizations", f"{CLEAN_NAME}_plot.png")
+IMG_OUT = os.path.join(BASE, "05_OUTPUTS", "visualizations", f"{CLEAN_NAME}.png")
 
 def run():
     start_time_pipeline = time.time()

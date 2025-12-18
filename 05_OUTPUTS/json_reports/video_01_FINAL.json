@@ -1,0 +1,161 @@
+{
+    "interview_id": "INT-VIDEO_01-1766091699",
+    "video_path": "C:\\SisIntFinal\\01_DATA\\raw\\video_01.mp4",
+    "global_metrics": {
+        "overall_congruence_score": 0.51,
+        "total_duration_sec": 33.72
+    },
+    "events": [
+        {
+            "start_time_sec": 0.0,
+            "end_time_sec": 7.0,
+            "transcribed_text": "Voy a verificar la tabla de requisitos y luego revisaré la habitácora que actualizó Vivian.",
+            "emotion_facial_mode": "neutral",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_history": [
+                "angry",
+                "neutral",
+                "neutral",
+                "neutral",
+                "surprise",
+                "surprise",
+                "surprise",
+                "neutral",
+                "neutral",
+                "neutral",
+                "neutral",
+                "surprise",
+                "neutral",
+                "angry"
+            ],
+            "congruence_score": 1.0,
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "is_change_point": false
+        },
+        {
+            "start_time_sec": 7.0,
+            "end_time_sec": 11.0,
+            "transcribed_text": "Solo estoy asegurando que todo este orden antes de iniciar el CUA.",
+            "emotion_facial_mode": "neutral",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_history": [
+                "neutral",
+                "neutral",
+                "neutral",
+                "neutral",
+                "neutral",
+                "angry",
+                "sad",
+                "sad"
+            ],
+            "congruence_score": 1.0,
+            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "is_change_point": false
+        },
+        {
+            "start_time_sec": 11.0,
+            "end_time_sec": 15.0,
+            "transcribed_text": "Espera, acabo de ver el correo.",
+            "emotion_facial_mode": "neutral",
+            "emotion_text_nlp": "surprise",
+            "emotion_facial_history": [
+                "surprise",
+                "sad",
+                "neutral",
+                "neutral",
+                "angry",
+                "neutral",
+                "neutral",
+                "neutral"
+            ],
+            "congruence_score": 0.3,
+            "temporal_insight": "Transición Abrupta en: Texto",
+            "is_change_point": true
+        },
+        {
+            "start_time_sec": 15.0,
+            "end_time_sec": 20.0,
+            "transcribed_text": "Ganamos el concurso de la mejor propuesta arquitectónica, no me lo puedo creer.",
+            "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "surprise",
+            "emotion_facial_history": [
+                "angry",
+                "neutral",
+                "sad",
+                "neutral",
+                "sad",
+                "neutral",
+                "happy",
+                "angry",
+                "happy",
+                "happy"
+            ],
+            "congruence_score": 0.7,
+            "temporal_insight": "Transición Abrupta en: Rostro",
+            "is_change_point": true
+        },
+        {
+            "start_time_sec": 20.0,
+            "end_time_sec": 25.0,
+            "transcribed_text": "Pensé que no teníamos ninguna oportunidad, que increíble noticia.",
+            "emotion_facial_mode": "happy",
+            "emotion_text_nlp": "sad",
+            "emotion_facial_history": [
+                "angry",
+                "sad",
+                "neutral",
+                "neutral",
+                "happy",
+                "happy",
+                "happy",
+                "happy",
+                "happy",
+                "happy"
+            ],
+            "congruence_score": 0.0,
+            "temporal_insight": "Transición Abrupta en: Texto",
+            "is_change_point": true
+        },
+        {
+            "start_time_sec": 25.0,
+            "end_time_sec": 32.28,
+            "transcribed_text": "Bueno, eso es genial, pero volviendo al trabajo, tenemos que terminar la estructura de datos",
+            "emotion_facial_mode": "sad",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_history": [
+                "happy",
+                "sad",
+                "sad",
+                "sad",
+                "neutral",
+                "happy",
+                "neutral",
+                "sad",
+                "neutral",
+                "sad",
+                "angry",
+                "surprise",
+                "sad",
+                "neutral"
+            ],
+            "congruence_score": 0.3,
+            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "is_change_point": true
+        },
+        {
+            "start_time_sec": 32.28,
+            "end_time_sec": 33.72,
+            "transcribed_text": "para que Carla pueda empezar.",
+            "emotion_facial_mode": "surprise",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_history": [
+                "sad",
+                "neutral",
+                "surprise"
+            ],
+            "congruence_score": 0.3,
+            "temporal_insight": "Transición Abrupta en: Rostro",
+            "is_change_point": true
+        }
+    ]
+}
