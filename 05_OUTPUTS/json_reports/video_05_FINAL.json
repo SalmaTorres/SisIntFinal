@@ -1,0 +1,77 @@
+{
+    "video": "video_05.mp4",
+    "events": [
+        {
+            "start_time_sec": 0.0,
+            "end_time_sec": 4.8,
+            "text": "Acabamos de terminar la primera fase del proyecto y estamos muy contentas de que",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 4.8,
+            "end_time_sec": 9.48,
+            "text": "la etapa de instalación fue súper fluida y el deepface logró reconocer la cara",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 9.48,
+            "end_time_sec": 14.68,
+            "text": "de la imagen de prueba sin ningún problema. Estamos muy emocionadas por ver",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 14.68,
+            "end_time_sec": 20.32,
+            "text": "cómo se está desarrollando este proyecto, pero luego al intentar integrar",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 20.32,
+            "end_time_sec": 24.6,
+            "text": "whisper nos dimos cuenta que la sincronización de los frames con el",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "sad",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 24.6,
+            "end_time_sec": 29.2,
+            "text": "audio nos está dando errores. Esto es frustrante ya que significa que la",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 29.2,
+            "end_time_sec": 36.28,
+            "text": "integración no será tan fácil como pensábamos. Pero entonces, para el día 2 nos propusimos",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 36.28,
+            "end_time_sec": 42.16,
+            "text": "crear un helper para que recalcule los tiempos y estandarice la salida JSON. Tenemos que",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 42.16,
+            "end_time_sec": 46.36,
+            "text": "lograr eliminar todos los errores para que el proyecto vaya en marcha.",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        }
+    ]
+}

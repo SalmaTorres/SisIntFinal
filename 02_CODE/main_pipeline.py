@@ -1,109 +1,84 @@
 import os
 import sys
 import json
-import time
+import torch
 
-# --- CONFIGURACIÓN DE PATHS ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(BASE_DIR)
+# --- CONFIGURACIÓN DE RUTAS ---
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) # 02_CODE
+BASE = os.path.dirname(CURRENT_DIR) # SISINTFINAL
+MODULES_PATH = os.path.join(CURRENT_DIR, "modules")
 
-# Importamos Módulos (Asegúrate de que los nombres de archivo coincidan)
-from utils.logger import get_logger
-from utils.helpers import validate_input_file, create_output_directory
-from modules.audio_text.transcriber import setup_pipelines, extract_audio, get_transcription_with_timestamps, assemble_asr_nlp_output
-from modules.visual.face_extractor import extract_faces_from_video
-from modules.integration.synchronizer import synchronize_multimodal_data
+# Agregar 02_CODE al path para encontrar 'utils' y 'modules'
+sys.path.append(CURRENT_DIR)
+sys.path.append(os.path.join(MODULES_PATH, "audio_text"))
+sys.path.append(os.path.join(MODULES_PATH, "visual"))
+sys.path.append(os.path.join(MODULES_PATH, "integration"))
 
-# Configuración Global
-log = get_logger("PIPELINE_PRINCIPAL")
-ROOT_DIR = os.path.dirname(BASE_DIR) # SISINTFINAL
+# --- IMPORTACIÓN DE TUS UTILS ---
+try:
+    from utils.logger import get_logger
+    from utils.helpers import validate_input_file, create_output_directory
+    log = get_logger("PIPELINE_PRINCIPAL")
+except ImportError as e:
+    print(f"Error crítico: No se encontraron tus utils. {e}")
+    sys.exit(1)
 
-# --- PARÁMETROS DE ENTRADA (CAMBIAR AQUÍ EL VIDEO A PROCESAR) ---
-VIDEO_NAME = "video_04.mp4" 
-VIDEO_PATH = os.path.join(ROOT_DIR, "01_DATA", "raw", VIDEO_NAME)
+# Importación de Módulos
+import transcriber as ts
+import face_extractor as fe
+import synchronizer as sy
+import visualizer as vi
 
-def run_full_pipeline():
-    start_global = time.time()
-    log.info(f" INICIANDO PIPELINE END-TO-END: {VIDEO_NAME}")
+# --- PARÁMETROS ---
+VIDEO_NAME = "video_05.mp4" 
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-    setup_pipelines() 
+# Rutas de Archivos
+VIDEO_PATH = os.path.join(BASE, "01_DATA", "raw", VIDEO_NAME)
+CLEAN_NAME = os.path.splitext(VIDEO_NAME)[0]
+AUDIO_OUT = os.path.join(BASE, "01_DATA", "audio_clean", f"audio_{CLEAN_NAME}.wav")
+CSV_OUT = os.path.join(BASE, "01_DATA", "series_temporales", f"{CLEAN_NAME}_faces.csv")
+JSON_OUT = os.path.join(BASE, "05_OUTPUTS", "json_reports", f"{CLEAN_NAME}_FINAL.json")
+IMG_OUT = os.path.join(BASE, "05_OUTPUTS", "visualizations", f"{CLEAN_NAME}_plot.png")
 
-    # 1. Validaciones Iniciales
+def run():
+    log.info(f" INICIANDO PROCESAMIENTO: {VIDEO_NAME}")
+    
+    # 1. Validación inicial con tu helper
     if not validate_input_file(VIDEO_PATH):
-        log.error("Abortando pipeline: No se encuentra el video de entrada.")
+        log.error(f"No se encuentra el video en: {VIDEO_PATH}")
         return
 
-    # Preparar nombres de archivos intermedios
-    filename_clean = os.path.splitext(VIDEO_NAME)[0]
-    audio_path = os.path.join(ROOT_DIR, "01_DATA", "processed", "audio_clean", f"audio_{filename_clean}.wav")
-    faces_csv_path = os.path.join(ROOT_DIR, "05_OUTPUTS", "series_temporales", f"{filename_clean}_faces.csv")
-    final_json_path = os.path.join(ROOT_DIR, "05_OUTPUTS", "json_reports", "final_integration", f"{filename_clean}_FINAL.json")
+    # 2. Preparar Modelos
+    ts.setup_pipelines(DEVICE)
 
-    # ---------------------------------------------------------
-    # FASE 1: PROCESAMIENTO DE AUDIO / TEXTO
-    # ---------------------------------------------------------
-    log.info(">>> FASE 1: Audio y NLP")
-    if extract_audio(VIDEO_PATH, audio_path):
-        # Obtenemos la lista de transcripciones (con timestamps)
-        transcription_results = get_transcription_with_timestamps(audio_path)
-        # Generamos el reporte individual de audio (Opcional, pero bueno para debug)
-        audio_json = assemble_asr_nlp_output(transcription_results) 
-        
-        # Extraemos la data enriquecida de audio (con emociones de texto si ya las calculaste)
-        # Nota: Para el PBI 3.1 usaremos 'transcription_results' y el CSV
+    # 3. Audio y Texto
+    transcription_data = []
+    if ts.extract_audio(VIDEO_PATH, AUDIO_OUT):
+        transcription_data = ts.get_transcription_and_emotion(AUDIO_OUT)
     else:
-        log.error("Fallo en extracción de audio.")
         return
 
-    # ---------------------------------------------------------
-    # FASE 2: PROCESAMIENTO VISUAL (DeepFace)
-    # ---------------------------------------------------------
-    log.info(">>> FASE 2: Extracción Facial (CNN)")
-    # Este script genera el CSV en la ruta faces_csv_path
-    # sample_rate=15 para ir rápido en pruebas, bajar a 5 o 1 para prod
-    extract_faces_from_video(VIDEO_PATH, sample_rate=15) 
+    # 4. Facial (DeepFace)
+    fe.extract_faces_from_video(VIDEO_PATH, CSV_OUT)
 
-    if not os.path.exists(faces_csv_path):
-        log.error("Fallo crítico: No se generó el CSV de caras.")
-        return
+    # 5. Sincronización
+    if transcription_data and os.path.exists(CSV_OUT):
+        integrated_data = sy.synchronize_data(transcription_data, CSV_OUT)
 
-    # ---------------------------------------------------------
-    # FASE 3: INTEGRACIÓN Y SINCRONIZACIÓN
-    # ---------------------------------------------------------
-    log.info(">>> FASE 3: Sincronización Multimodal")
-    
-    # Llamamos a la función (que ahora es MOCK, luego será REAL)
-    integrated_events = synchronize_multimodal_data(transcription_results, faces_csv_path)
+        # 6. Guardar Reporte Final usando tu helper
+        create_output_directory(os.path.dirname(JSON_OUT))
+        with open(JSON_OUT, 'w', encoding='utf-8') as f:
+            json.dump({"video": VIDEO_NAME, "events": integrated_data}, f, indent=4, ensure_ascii=False)
+        log.info(f"Reporte JSON guardado: {JSON_OUT}")
 
-    # ---------------------------------------------------------
-    # FASE 4: GENERACIÓN DEL ENTREGABLE FINAL
-    # ---------------------------------------------------------
-    log.info(">>> FASE 4: Guardado de Resultados (Contract Compliance)")
-    
-    # 1. Calcular Métricas Globales (Promedio de congruencia)
-    total_congruence = sum([e['congruence_score'] for e in integrated_events])
-    count_events = len(integrated_events)
-    avg_congruence = round(total_congruence / count_events, 2) if count_events > 0 else 0.0
-    
-    # 2. Obtener duración total (del último evento)
-    total_duration = integrated_events[-1]['end_time_sec'] if integrated_events else 0.0
+        # 7. Gráfico
+        vi.generate_comparison_plot(integrated_data, IMG_OUT)
+        log.info(f"Gráfico guardado: {IMG_OUT}")
+    else:
+        log.error("Faltan datos para la sincronización final.")
 
-    # 3. Construir el JSON EXACTO según tu output_structure_contract.json
-    final_output = {
-        "interview_id": f"INT-{filename_clean}", # Generamos un ID basado en el nombre
-        "video_path": VIDEO_PATH,
-        "global_metrics": {
-            "overall_congruence_score": avg_congruence,
-            "total_duration_sec": total_duration
-        },
-        "events": integrated_events # Esta lista viene del synchronizer.py
-    }
-
-    create_output_directory(os.path.dirname(final_json_path))
-    with open(final_json_path, 'w', encoding='utf-8') as f:
-        json.dump(final_output, f, indent=4, ensure_ascii=False)
-
-    log.info(f" Archivo Final: {final_json_path}")
+    log.info("=== PIPELINE COMPLETADO ===")
 
 if __name__ == "__main__":
-    run_full_pipeline()
+    run()

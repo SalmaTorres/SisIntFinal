@@ -1,0 +1,77 @@
+{
+    "video": "video_03.mp4",
+    "events": [
+        {
+            "start_time_sec": 0.0,
+            "end_time_sec": 3.6,
+            "text": "Me sentí muy feliz que desde el inicio empecemos a trabajar con este",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 3.6,
+            "end_time_sec": 7.8,
+            "text": "proyecto desde cero, me siento muy contenta con mi equipo ya que desde un",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 7.8,
+            "end_time_sec": 12.72,
+            "text": "principio fue motivador, ya que logramos con Salmi y con Vivi ponernos de acuerdo",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 12.72,
+            "end_time_sec": 18.18,
+            "text": "cómo nos íbamos a dividir el trabajo, ya que en este periodo tan corto pero tan",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 18.18,
+            "end_time_sec": 22.64,
+            "text": "emocionante porque estamos al contrario del vlog, pero es muy bonito ver",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 22.64,
+            "end_time_sec": 27.96,
+            "text": "como cada etapa del proyecto vamos presentando algo y va tomando forma el",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 27.96,
+            "end_time_sec": 33.52,
+            "text": "proyecto, ya estamos muy entusiasmadas porque el sistema ya logra reconocer emociones,",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 33.52,
+            "end_time_sec": 38.52,
+            "text": "audio, entonces ya queremos ver cómo va a ir la presentación final de este viernes,",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 38.52,
+            "end_time_sec": 40.0,
+            "text": "que seguro va a estar fantástica.",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        }
+    ]
+}

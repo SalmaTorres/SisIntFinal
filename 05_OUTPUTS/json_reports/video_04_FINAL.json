@@ -1,0 +1,77 @@
+{
+    "video": "video_04.mp4",
+    "events": [
+        {
+            "start_time_sec": 0.0,
+            "end_time_sec": 4.2,
+            "text": "Al comienzo del proyecto me sentí muy emocionada y con muchas ganas de trabajar.",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 4.2,
+            "end_time_sec": 9.0,
+            "text": "Con Salmi y con Vivi teníamos ideas super claras y empezamos con mucha energía.",
+            "emotion_text_nlp": "happy",
+            "emotion_facial_mode": "happy",
+            "congruence": 1.0
+        },
+        {
+            "start_time_sec": 9.0,
+            "end_time_sec": 12.0,
+            "text": "Esto fue fundamental para la motivación del equipo.",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "happy",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 12.0,
+            "end_time_sec": 18.0,
+            "text": "Pero con el pasar de los días el trabajo se volvió mucho más técnico y estricto.",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 18.0,
+            "end_time_sec": 27.0,
+            "text": "Teníamos que reorganizarnos, teníamos que corregir errores y teníamos que ver la forma de ver cómo vamos a integrar todo el sistema.",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 27.0,
+            "end_time_sec": 34.9,
+            "text": "tema, en esta etapa me sentí muy concentrada y enfocada en los objetivos diarios, pero",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 34.9,
+            "end_time_sec": 42.5,
+            "text": "también en esta parte del proyecto nos sentimos muy estresadas ya que a veces no nos salían",
+            "emotion_text_nlp": "neutral",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 42.5,
+            "end_time_sec": 49.42,
+            "text": "las cosas como esperábamos y las cosas no iban bien, nos estaba comiendo el tiempo y a veces",
+            "emotion_text_nlp": "sad",
+            "emotion_facial_mode": "angry",
+            "congruence": 0.0
+        },
+        {
+            "start_time_sec": 49.42,
+            "end_time_sec": 53.78,
+            "text": "se sentía como que el tiempo no nos iba a alcanzar, entonces fue muy frustrante.",
+            "emotion_text_nlp": "sad",
+            "emotion_facial_mode": "sad",
+            "congruence": 1.0
+        }
+    ]
+}
