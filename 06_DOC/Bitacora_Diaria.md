@@ -110,3 +110,10 @@ Copia este bloque al final de tu bitácora para registrar el cumplimiento de las
 - Se validó que el JSON generado sea parseable y no contenga valores nulos en los campos críticos de tiempo.
 
 **Estado Final Día 3:** Tareas 3.1, 3.2 y 3.3 completadas al 100%. Sistema integrado funcional.
+## 4.1 QA - TCI 3.5 Pruebas de Integración y Validación
+
+
+- **Ejecución End-to-End:** Se validó el pipeline completo procesando automáticamente los videos `video_03` y `video_04`.
+- **Corrección de Entorno:** Se resolvió una incidencia técnica de importación de librerías (`ModuleNotFoundError`) asegurando que los subprocesos de prueba utilicen el intérprete de Python del entorno virtual `venv_sia`.
+- **Integridad de Datos:** El script de validación confirmó que los archivos `video_03_FINAL.json` y `video_04_FINAL.json` contienen eventos sincronizados, transcripciones completas y no presentan valores nulos en los campos críticos.
+- **Resultado:** Prueba superada exitosamente. El sistema es robusto y está listo para el análisis de congruencia del Día 4.
