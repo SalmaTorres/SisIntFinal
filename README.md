@@ -39,7 +39,12 @@ El módulo de Transcripción (ASR/Whisper) depende de la herramienta de sistema 
 **Verificación Rápida (Módulo ASR/Whisper):** 
     * Asegure la existencia de `01_DATA/raw/audio_prueba_10s.wav` (formato WAV PCM 16kHz).
     * Ejecute: `python 02_CODE/module_audio_text.py` (Debe devolver la transcripción).
-
+    
+### 1.4. Librerías Adicionales para Integración (Día 3)
+Para generar los reportes visuales de comparación emocional, es necesario instalar:
+```bash
+pip install matplotlib
+```
 ---
 
 ## 2. Modelos Preentrenados y Estrategia
@@ -124,4 +129,12 @@ Para asegurar la interoperabilidad de los módulos durante la integración, se d
 ### 5.3. Sistema de Trazabilidad (`logger.py`)
 * **Propósito:** Registro centralizado de eventos y errores para auditoría de QA.
 * **Ubicación:** `05_OUTPUTS/logs/system_execution.log`.
+
+### 5.4. Reporte Final Integrado (Contrato PBI 1.3)
+El resultado final es un objeto JSON que consolida la visión multimodal del sistema:
+* **Events:** Lista sincronizada de frases donde cada una incluye:
+    - `transcribed_text`: Texto obtenido por Whisper.
+    - `emotion_facial_mode`: Moda de emociones detectadas por DeepFace en ese intervalo.
+    - `emotion_facial_history`: Lista de todas las emociones detectadas frame a frame para análisis de microexpresiones.
+    - `emotion_text_nlp`: Clasificación emocional del texto mediante BERT/Robertuito.
 ---
