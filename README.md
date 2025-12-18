@@ -137,4 +137,29 @@ El resultado final es un objeto JSON que consolida la visión multimodal del sis
     - `emotion_facial_mode`: Moda de emociones detectadas por DeepFace en ese intervalo.
     - `emotion_facial_history`: Lista de todas las emociones detectadas frame a frame para análisis de microexpresiones.
     - `emotion_text_nlp`: Clasificación emocional del texto mediante BERT/Robertuito.
+    - 
+## 6. Pruebas y Validación (QA)
+
+Para asegurar la integridad del sistema tras cambios en los módulos, se cuenta con un script de validación de integración:
+
+```bash
+python 02_CODE/tests/test_integration_qa.py
+```
+## 7. Documentación de Integración y Flujo de Datos (TCI 3.6)
+
+El sistema utiliza una arquitectura de tubería (pipeline) donde los datos se transforman en tres etapas principales:
+
+### 7.1. Lógica de Sincronización y Fusión (PBI 3.1)
+La sincronización se basa en el archivo `synchronizer.py`, el cual ejecuta el siguiente algoritmo:
+1. **Entrada:** Recibe el JSON de audio (transcripción con tiempos) y el CSV de caras (emociones por frame).
+2. **Filtrado Temporal:** Para cada frase transcrita, el sistema filtra los frames del video que ocurren estrictamente entre el `start_time` y el `end_time` de dicha frase.
+3. **Cálculo de Moda:** Se extrae la emoción facial predominante (la que más se repite) en ese intervalo.
+4. **Manejo de Errores (Robustez):** Si un segmento de audio no contiene frames asociados (ej: cara tapada o fuera de cuadro), el sistema asigna automáticamente la etiqueta `"neutral"` o `"unknown"` en lugar de interrumpir el proceso.
+
+### 7.2. Flujo de Transformación de Datos
+
+* **Paso 1 (Extracción):** El video se divide en audio (`.wav`) y frames procesados (`.csv`).
+* **Paso 2 (Análisis):** Whisper genera texto con marcas de tiempo; DeepFace genera etiquetas emocionales por segundo.
+* **Paso 3 (Fusión):** Se realiza el mapeo 1:N (una frase para muchos frames faciales) para obtener la concordancia emocional.
+* **Paso 4 (Salida):** Se genera el JSON final integrado y el gráfico comparativo de validación.
 ---
