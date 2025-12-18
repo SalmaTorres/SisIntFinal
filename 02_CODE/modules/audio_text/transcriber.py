@@ -60,6 +60,9 @@ def get_transcription_and_emotion(audio_path):
 
             if label == "sadness":
                 label = "sad"
+
+            if label == "anger":
+                label = "angry"
                 
             chunks.append({
                 'start_time': chunk['timestamp'][0], 
