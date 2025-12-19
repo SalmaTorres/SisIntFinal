@@ -73,9 +73,11 @@ def synchronize_data(transcription_data, csv_path):
     if not os.path.exists(csv_path):
         log.error(f"No existe el CSV de rostros: {csv_path}")
         return []
-
     try:
         df_faces = pd.read_csv(csv_path)
+        if df_faces.empty:
+            log.warning("Serie temporal de rostros vacía. ¿Rostros no detectados?")
+            return []
     except Exception as e:
         log.error(f"Error leyendo el CSV: {e}")
         return []

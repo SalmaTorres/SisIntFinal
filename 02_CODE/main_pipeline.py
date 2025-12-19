@@ -3,43 +3,56 @@ import sys
 import json
 import torch
 import time
-import analyzer as an
 
 # --- CONFIGURACIÓN DE RUTAS PARA IMPORTACIÓN ---
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) # 02_CODE
-BASE = os.path.dirname(CURRENT_DIR) # SISINTFINAL
-MODULES_PATH = os.path.join(CURRENT_DIR, "modules")
+# CURRENT_DIR es SISINTFINAL/02_CODE
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) 
+BASE = os.path.dirname(CURRENT_DIR) 
 
-# Agregar rutas al sistema para encontrar utils y módulos
+# Rutas según tu estructura de carpetas
+MODULES_PATH = os.path.join(CURRENT_DIR, "modules")
+UTILS_PATH = os.path.join(CURRENT_DIR, "utils")
+
+# Agregar rutas al sistema para que Python encuentre los archivos .py
 sys.path.append(CURRENT_DIR)
+sys.path.append(MODULES_PATH)
 sys.path.append(os.path.join(MODULES_PATH, "audio_text"))
 sys.path.append(os.path.join(MODULES_PATH, "visual"))
 sys.path.append(os.path.join(MODULES_PATH, "integration"))
+sys.path.append(UTILS_PATH)
 
 # --- IMPORTACIÓN DE TUS UTILS ---
 try:
-    from utils.logger import get_logger
-    from utils.helpers import validate_input_file, create_output_directory
+    # Se importa desde la carpeta utils
+    from logger import get_logger
+    from helpers import validate_input_file, create_output_directory
     log = get_logger("PIPELINE_PRINCIPAL")
 except ImportError as e:
-    print(f"Error crítico: No se encontraron tus utils. {e}")
+    print(f"Error crítico: No se encontraron tus utils en {UTILS_PATH}. Detalle: {e}")
     sys.exit(1)
 
-# Importación de Módulos
-import transcriber as ts
-import face_extractor as fe
-import synchronizer as sy
-import visualizer as vi
+# --- IMPORTACIÓN DE MÓDULOS ---
+try:
+    import transcriber as ts        # Desde modules/audio_text/transcriber.py
+    import face_extractor as fe     # Desde modules/visual/face_extractor.py
+    import synchronizer as sy       # Desde modules/integration/synchronizer.py
+    import visualizer as vi         # Desde modules/integration/visualizer.py
+    import analyzer as an           # Desde modules/integration/analyzer.py
+    from validator import run_manual_validation # Desde modules/integration/validator.py
+except ImportError as e:
+    log.error(f"Error al importar módulos funcionales: {e}")
+    sys.exit(1)
 
 # --- PARÁMETROS GLOBALES ---
 VIDEO_NAME = "video_04.mp4" 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Definición de Rutas de Archivos (Estructura SISINTFINAL)
+# Las entradas están en 01_DATA/raw
 VIDEO_PATH = os.path.join(BASE, "01_DATA", "raw", VIDEO_NAME)
 CLEAN_NAME = os.path.splitext(VIDEO_NAME)[0]
 
-# Salidas Intermedias y Finales
+# Salidas Intermedias y Finales organizadas según tu estructura
 AUDIO_OUT = os.path.join(BASE, "01_DATA", "audio_clean", f"audio_{CLEAN_NAME}.wav")
 CSV_OUT = os.path.join(BASE, "01_DATA", "series_temporales", f"{CLEAN_NAME}_faces.csv")
 JSON_OUT = os.path.join(BASE, "05_OUTPUTS", "json_reports", f"{CLEAN_NAME}_FINAL.json")
@@ -59,14 +72,19 @@ def run():
 
     # 3. FASE AUDIO/TEXTO
     transcription_data = []
+    # Aseguramos que existan las carpetas de salida
+    create_output_directory(os.path.dirname(AUDIO_OUT))
+    
     if ts.extract_audio(VIDEO_PATH, AUDIO_OUT):
+        # Según tu código, este método integra transcripción y emoción
         transcription_data = ts.get_transcription_and_emotion(AUDIO_OUT)
     else:
         log.error("Fallo en la extracción de audio. Abortando.")
         return
 
     # 4. FASE VISUAL (DeepFace)
-    fe.extract_faces_from_video(VIDEO_PATH, CSV_OUT, sample_rate=15)
+    create_output_directory(os.path.dirname(CSV_OUT))
+    fe.extract_faces_from_video(VIDEO_PATH, CSV_OUT, sample_rate=30)
 
     # 5. FASE DE SINCRONIZACIÓN E INTELIGENCIA (PBI 4.1, 4.2 & 4.3)
     if transcription_data and os.path.exists(CSV_OUT):
@@ -80,7 +98,7 @@ def run():
             return
 
         # 6. CÁLCULO DE MÉTRICAS GLOBALES (PBI 4.2)
-        total_scores = [e['congruence_score'] for e in events]
+        total_scores = [e['congruence_score'] for e in events if 'congruence_score' in e]
         overall_score = sum(total_scores) / len(total_scores) if total_scores else 0.0
         total_duration = events[-1]['end_time_sec'] if events else 0.0
         
@@ -101,7 +119,7 @@ def run():
             # analyzer.generate_insights evalúa el score y redacta la frase
             event["temporal_insight"] = an.generate_insights(event)
 
-        # Guardar JSON usando tu helper
+        # Guardar JSON final en 05_OUTPUTS
         create_output_directory(os.path.dirname(JSON_OUT))
         with open(JSON_OUT, 'w', encoding='utf-8') as f:
             json.dump(report_final, f, indent=4, ensure_ascii=False)
@@ -118,12 +136,12 @@ def run():
         log.info("Ejecutando auditoría de métricas (TCI4.6)...")
         manual_csv = os.path.join(BASE, "01_DATA", "validation_labels.csv")
         
-        from validator import run_manual_validation
-        robustness_report = run_manual_validation(JSON_OUT, manual_csv)
-        
-        if robustness_report:
-            # Guardar un pequeño log de robustez o añadirlo al JSON final
-            log.info(f"EL MODELO TIENE UNA PRECISIÓN DEL {robustness_report['robustness_accuracy']}% RESPECTO AL HUMANO.")
+        if os.path.exists(manual_csv):
+            robustness_report = run_manual_validation(JSON_OUT, manual_csv)
+            if robustness_report:
+                log.info(f"EL MODELO TIENE UNA PRECISIÓN DEL {robustness_report['robustness_accuracy']}% RESPECTO AL HUMANO.")
+        else:
+            log.warning(f"No se encontró archivo de validación manual en: {manual_csv}")
 
     else:
         log.error("No se pudo completar la sincronización. Verifica archivos intermedios.")

@@ -143,3 +143,13 @@ Copia este bloque al final de tu bitácora para registrar el cumplimiento de las
 * **Verificación de Ejecución:** Se confirmó mediante logs la correcta ejecución del módulo: *"Analista_Avanzado - PBI 4.3: Reporte preliminar e insights generados con éxito"*.
 
 **Estado Final Día 4:** Sprint Backlog 4 completado al 100%. El sistema no solo integra datos, sino que realiza un análisis descriptivo automático del comportamiento emocional del sujeto.
+Optimización de Velocidad y Manejo de Excepciones (PBI 4.4)
+Optimización de Visión: Se refactorizó el módulo face_extractor.py para implementar saltos de frames por hardware mediante cap.set(cv2.CAP_PROP_POS_FRAMES, ...). Esto permite procesar únicamente los frames definidos por el sample_rate, eliminando la decodificación innecesaria de imágenes intermedias.
+
+Eficiencia de Cómputo: Se integró una función de redimensionamiento (cv2.resize) que ajusta los frames a 640x480 antes de ser analizados por DeepFace. Esto reduce significativamente el uso de CPU/GPU sin perder la precisión necesaria para la detección de emociones.
+
+Robustez ante Errores: Se implementaron bloques try-except específicos en el análisis facial para ignorar frames corruptos o rostros borrosos, y se añadió una validación de integridad (df_faces.empty) en synchronizer.py para evitar errores de sincronización cuando no se detectan rostros en el video.
+
+Verificación de Ejecución: Se confirmó mediante logs la correcta validación de streams y el cálculo de tiempos finales: "
+
+Estado Final PBI 4.4: Sprint Backlog completado al 100%. El sistema es capaz de procesar videos de larga duración con un uso optimizado de recursos y posee mecanismos de defensa ante archivos de entrada inusuales o corruptos.

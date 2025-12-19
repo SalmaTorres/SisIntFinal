@@ -1,6 +1,6 @@
 {
-    "interview_id": "INT-VIDEO_04-1766093687",
-    "video_path": "C:\\SisIntFinal\\01_DATA\\raw\\video_04.mp4",
+    "interview_id": "INT-VIDEO_04-1766159516",
+    "video_path": "c:\\Users\\Vivi\\source\\SisIntFinal\\01_DATA\\raw\\video_04.mp4",
     "global_metrics": {
         "overall_congruence_score": 0.58,
         "total_duration_sec": 53.78
@@ -24,7 +24,7 @@
                 "happy"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         },
         {
@@ -46,7 +46,7 @@
                 "happy"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": false
         },
         {
@@ -65,7 +65,7 @@
                 "sad"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Transición Abrupta en: Texto",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'.",
             "is_change_point": true
         },
         {
@@ -90,7 +90,7 @@
                 "neutral"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Transición Abrupta en: Rostro",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'angry' pero el texto indica 'neutral'.",
             "is_change_point": true
         },
         {
@@ -121,7 +121,7 @@
                 "angry"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'angry' pero el texto indica 'neutral'.",
             "is_change_point": false
         },
         {
@@ -149,7 +149,7 @@
                 "sad"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'angry' pero el texto indica 'neutral'.",
             "is_change_point": false
         },
         {
@@ -177,7 +177,7 @@
                 "fear"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'angry' pero el texto indica 'neutral'.",
             "is_change_point": false
         },
         {
@@ -203,7 +203,7 @@
                 "angry"
             ],
             "congruence_score": 0.7,
-            "temporal_insight": "Transición Abrupta en: Texto",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         },
         {
@@ -224,7 +224,7 @@
                 "neutral"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Transición Abrupta en: Rostro",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         }
     ]
