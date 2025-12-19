@@ -3,6 +3,7 @@ import sys
 import json
 import torch
 import time
+import analyzer as an
 
 # --- CONFIGURACIÓN DE RUTAS PARA IMPORTACIÓN ---
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) # 02_CODE
@@ -93,6 +94,12 @@ def run():
             },
             "events": events # Lista con transcribed_text, emotion_facial_history, etc.
         }
+
+        # --- FASE DE INSIGHTS (PBI 4.3) ---
+        log.info("Generando insights narrativos para el reporte...")
+        for event in report_final["events"]:
+            # analyzer.generate_insights evalúa el score y redacta la frase
+            event["temporal_insight"] = an.generate_insights(event)
 
         # Guardar JSON usando tu helper
         create_output_directory(os.path.dirname(JSON_OUT))
