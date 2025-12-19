@@ -23,7 +23,7 @@
                 "happy"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         },
         {
@@ -43,7 +43,7 @@
                 "neutral"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": false
         },
         {
@@ -65,7 +65,7 @@
                 "neutral"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Transición Abrupta en: Rostro",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'neutral' pero el texto indica 'happy'.",
             "is_change_point": true
         },
         {
@@ -88,7 +88,7 @@
                 "happy"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Transición Abrupta en: Texto, Rostro",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'.",
             "is_change_point": true
         },
         {
@@ -109,7 +109,7 @@
                 "happy"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'.",
             "is_change_point": false
         },
         {
@@ -131,7 +131,7 @@
                 "surprise"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Estado Emocional Estable (Persistencia Temporal)",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'.",
             "is_change_point": false
         },
         {
@@ -155,7 +155,7 @@
                 "happy"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Transición Abrupta en: Texto",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         },
         {
@@ -177,7 +177,7 @@
                 "happy"
             ],
             "congruence_score": 0.3,
-            "temporal_insight": "Transición Abrupta en: Texto",
+            "temporal_insight": "Insight: La congruencia es baja (0.3) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'.",
             "is_change_point": true
         },
         {
@@ -192,7 +192,7 @@
                 "happy"
             ],
             "congruence_score": 1.0,
-            "temporal_insight": "Transición Abrupta en: Texto",
+            "temporal_insight": "Insight: Alta coherencia emocional detectada en este segmento.",
             "is_change_point": true
         }
     ]
