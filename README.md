@@ -125,3 +125,26 @@ El sistema genera un gráfico de dos niveles para facilitar la interpretación m
 * **Paso 3 (Fusión):** Se realiza el mapeo 1:N (una frase para muchos frames faciales) para obtener la concordancia emocional.
 * **Paso 4 (Salida):** Se genera el JSON final integrado y el gráfico comparativo de validación.
 ---
+## 9. Análisis Avanzado e Insights (Día 4)
+
+En esta fase, el sistema evoluciona de una simple integración de datos a un motor de análisis cualitativo y métrico.
+
+### 9.1. Detección de Cambios Emocionales (PBI 4.1)
+El sistema implementa una lógica para identificar picos, valles y transiciones abruptas en el comportamiento del entrevistado.
+* **Análisis Recurrente:** Se procesa el `emotion_facial_history` para detectar cambios de estado significativos entre segmentos.
+* **Marcado de Eventos:** Los puntos de cambio son identificados y registrados en la estructura de datos interna para su posterior auditoría.
+
+### 9.2. Métrica de Congruencia Facial vs. Textual (PBI 4.2)
+Se ha implementado una métrica de correlación (score) para cuantificar la veracidad emocional.
+* **Cálculo del Score:** Se asigna un valor de 0.0 a 1.0 comparando la emoción del rostro contra la del texto en cada intervalo de tiempo.
+* **Registro en JSON:** El resultado se almacena en el campo `congruence_score` de cada evento, permitiendo identificar contradicciones multimodales.
+
+
+
+### 9.3. Generación de Insights Automáticos (PBI 4.3)
+A través del módulo `analyzer.py`, el sistema genera reportes narrativos preliminares.
+* **Narrativa Automática:** El sistema redacta frases en el campo `temporal_insight` basadas en el análisis de congruencia.
+* **Ejemplo de Insight:** *"Insight: La congruencia es baja (0.35) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'"*.
+* **Utilidad:** Facilita la interpretación rápida de la entrevista sin necesidad de revisar la serie temporal completa.
+
+---

@@ -34,7 +34,7 @@
 - **Riesgo Mitigado (Dependencia Crítica):** Se identificó y resolvió un error de `moviepy` debido a la falta de la herramienta de sistema **FFmpeg**. Se logró la instalación de FFmpeg y se actualizó la variable **PATH** del sistema operativo, permitiendo la correcta extracción de audio de los archivos `.mp4`.
 - **Impacto en el Contrato:** El script de prueba ya incluye la lógica para extraer audio, garantizando que el campo `transcribed_text` se llenará correctamente según el Contrato JSON (PBI 1.3).
 
-## Sprint 2 (Martes)
+## Bitácora de Desarrollo Sprint 2 (Martes)
 **Líder Técnico:** Vivi
 **Documentador:** Carla 
 **QA:** Salma
@@ -117,3 +117,29 @@ Copia este bloque al final de tu bitácora para registrar el cumplimiento de las
 - **Corrección de Entorno:** Se resolvió una incidencia técnica de importación de librerías (`ModuleNotFoundError`) asegurando que los subprocesos de prueba utilicen el intérprete de Python del entorno virtual `venv_sia`.
 - **Integridad de Datos:** El script de validación confirmó que los archivos `video_03_FINAL.json` y `video_04_FINAL.json` contienen eventos sincronizados, transcripciones completas y no presentan valores nulos en los campos críticos.
 - **Resultado:** Prueba superada exitosamente. El sistema es robusto y está listo para el análisis de congruencia del Día 4.
+
+## Bitácora de Desarrollo - Sprint 4 (Viernes) - Análisis Temporal e Insights
+
+**Líder Técnico:** Vivi
+**Documentador:** Carla
+**QA:** Salma
+
+### 1. Detección de Cambios Emocionales (PBI 4.1)
+* **Implementación:** Se desarrolló la lógica para identificar variaciones significativas en la serie de tiempo emocional.
+* **Técnica:** Se utilizó el historial de frames (`emotion_facial_history`) extraído en los días previos para detectar picos, valles o transiciones abruptas dentro de cada segmento.
+* **Resultado:** Los puntos de cambio emocional ahora son identificados y marcados internamente para alimentar la generación de insights cualitativos.
+
+### 2. Cálculo de Métrica de Congruencia (PBI 4.2)
+* **Métrica:** Se implementó una lógica de correlación (score) que cuantifica el nivel de acuerdo entre la fuente facial (`emotion_facial_mode`) y la fuente textual (`emotion_text_nlp`).
+* **Integración:** El cálculo se realiza por intervalos de tiempo definidos por el ASR y el score resultante se registra automáticamente en el campo `congruence_score` de la salida JSON.
+* **Criterio de Confirmación:** Se verificó que el sistema asigne valores numéricos reales en lugar de los valores por defecto (0.0), reflejando el nivel de coherencia multimodal.
+
+
+
+### 3. Generación de Insights y Reporte Preliminar (PBI 4.3)
+* **Automatización:** Se desarrolló el módulo `analyzer.py` encargado de transformar las métricas en lenguaje natural.
+* **Lógica Narrativa:** El sistema genera frases dinámicas basadas en el score de congruencia. Por ejemplo: *"Insight: La congruencia es baja (0.35) debido a que el rostro expresa 'happy' pero el texto indica 'neutral'"*.
+* **Reporte Final:** El script valida el archivo `video_03_FINAL.json` y sobrescribe los campos `temporal_insight` con la narrativa generada, creando así el reporte preliminar de análisis.
+* **Verificación de Ejecución:** Se confirmó mediante logs la correcta ejecución del módulo: *"Analista_Avanzado - PBI 4.3: Reporte preliminar e insights generados con éxito"*.
+
+**Estado Final Día 4:** Sprint Backlog 4 completado al 100%. El sistema no solo integra datos, sino que realiza un análisis descriptivo automático del comportamiento emocional del sujeto.
